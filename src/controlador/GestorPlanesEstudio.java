@@ -1,4 +1,6 @@
-package gestorplanesestudio;
+package controlador;
+
+
 
 /**
  * Main class
