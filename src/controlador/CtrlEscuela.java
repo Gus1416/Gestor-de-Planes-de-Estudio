@@ -31,16 +31,26 @@ public class CtrlEscuela implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == regEscuela.btnRegistrarEscuela){
-      escuela.setCodigo(regEscuela.tfCodigoEscuela.getText());
-      escuela.setNombre(regEscuela.tfNombreEscuela.getText());
-      if (escuelaCrud.registrar(escuela)){
-        JOptionPane.showMessageDialog(null, "Escuela Registrada");
-        limpiar();
+      
+      if (!regEscuela.tfCodigoEscuela.getText().isEmpty() && !regEscuela.tfNombreEscuela.getText().isEmpty()){
+        
+        escuela.setCodigo(regEscuela.tfCodigoEscuela.getText());
+        escuela.setNombre(regEscuela.tfNombreEscuela.getText());
+        
+        if (escuelaCrud.registrar(escuela)){
+          JOptionPane.showMessageDialog(null, "Escuela Registrada");
+          limpiar();
+        } else {
+          JOptionPane.showMessageDialog(null, "Error: Código repetido");
+          limpiar();
+        } 
+        
       } else {
-        JOptionPane.showMessageDialog(null, "Error al registrar la escuela");
-        limpiar();
+      JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+      limpiar();
       }
-    }
+    } 
+    
     if (e.getSource() == regEscuela.btnLimpiarCampos){
       limpiar();
     }
