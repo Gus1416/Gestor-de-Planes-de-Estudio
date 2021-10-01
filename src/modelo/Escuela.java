@@ -13,9 +13,8 @@ public class Escuela {
   private String codigo;
   //private ArrayList<PlanesEstudio> planesEstudio;
     
-  public Escuela(String pNombre, String pCodigo){
-    setNombre(pNombre);
-    setCodigo(pCodigo);
+  public Escuela(){
+    
   }
 
   /**
