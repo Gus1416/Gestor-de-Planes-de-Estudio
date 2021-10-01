@@ -3,7 +3,7 @@ package modelo;
 import java.util.ArrayList;
 
 /**
- * Clase Escuela
+ * Abstracción de clase escuela
  * 
  * @author Gustavo
  * @version 1.0 26/09/2021

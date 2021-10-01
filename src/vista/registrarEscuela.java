@@ -9,12 +9,12 @@ package vista;
  *
  * @author Gustavo
  */
-public class RegistrarEscuela extends javax.swing.JFrame {
+public class registrarEscuela extends javax.swing.JFrame {
 
   /**
    * Creates new form registrarEscuela
    */
-  public RegistrarEscuela() {
+  public registrarEscuela() {
     initComponents();
   }
 
@@ -147,24 +147,26 @@ public class RegistrarEscuela extends javax.swing.JFrame {
       }
     } catch (ClassNotFoundException ex)
     {
-      java.util.logging.Logger.getLogger(RegistrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(registrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex)
     {
-      java.util.logging.Logger.getLogger(RegistrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(registrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex)
     {
-      java.util.logging.Logger.getLogger(RegistrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(registrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex)
     {
-      java.util.logging.Logger.getLogger(RegistrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(registrarEscuela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
     //</editor-fold>
     //</editor-fold>
 
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        new RegistrarEscuela().setVisible(true);
+        new registrarEscuela().setVisible(true);
       }
     });
   }

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Escuela;
 import modelo.EscuelaCRUD;
-import vista.RegistrarEscuela;
+import vista.registrarEscuela;
 
 /**
  *
@@ -14,9 +14,9 @@ import vista.RegistrarEscuela;
 public class CtrlEscuela implements ActionListener {
   private Escuela escuela;
   private EscuelaCRUD escuelaCrud;
-  private RegistrarEscuela regEscuela;
+  private registrarEscuela regEscuela;
   
-  public CtrlEscuela(Escuela pEscuela, EscuelaCRUD pEscuelaCrud, RegistrarEscuela pRegEscuela){
+  public CtrlEscuela(Escuela pEscuela, EscuelaCRUD pEscuelaCrud, registrarEscuela pRegEscuela){
     this.escuela = pEscuela;
     this.escuelaCrud = pEscuelaCrud;
     this.regEscuela = pRegEscuela;
