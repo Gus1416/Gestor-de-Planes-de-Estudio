@@ -21,6 +21,7 @@ public class CtrlEscuela implements ActionListener {
     this.escuelaCrud = pEscuelaCrud;
     this.regEscuela = pRegEscuela;
     this.regEscuela.btnRegistrarEscuela.addActionListener(this);
+    this.regEscuela.btnLimpiarCampos.addActionListener(this);
   }
   
   public void iniciar(){
