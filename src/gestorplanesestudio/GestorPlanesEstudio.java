@@ -3,7 +3,7 @@ package gestorplanesestudio;
 import controlador.CtrlEscuela;
 import modelo.Escuela;
 import modelo.EscuelaCRUD;
-import vista.registrarEscuela;
+import vista.RegistrarEscuela;
 
 /**
  * Main class
@@ -21,7 +21,7 @@ public class GestorPlanesEstudio {
     public static void main(String[] args) {
         Escuela escuela = new Escuela();
         EscuelaCRUD escuelaCrud = new EscuelaCRUD();
-        registrarEscuela regEscuela = new registrarEscuela();
+        RegistrarEscuela regEscuela = new RegistrarEscuela();
         
         CtrlEscuela ctrlEscuela = new CtrlEscuela(escuela, escuelaCrud, regEscuela);
         ctrlEscuela.iniciar();

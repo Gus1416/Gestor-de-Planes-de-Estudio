@@ -88,7 +88,7 @@
                       <Component id="tfNombreEscuela" min="-2" pref="279" max="-2" attributes="0"/>
                       <Component id="tfCodigoEscuela" min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
