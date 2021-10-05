@@ -3,6 +3,7 @@ package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,12 +13,16 @@ import java.util.logging.Logger;
  */
 public class Conexion {
   private final String base = "db_gestor_planes_estudio";
-  private final String password = "12345";
+  private final String password = "1234";
   private final String user = "root";
   private final String url = "jdbc:mysql://localhost:3306/" + base;
-  private Connection con = null;
+  private  Connection con = null;
   
-  public Connection getConexion(){
+    /**
+     *
+     * @return
+     */
+    public Connection getConexion(){
     try{
       Class.forName("com.mysql.cj.jdbc.Driver");
       con = DriverManager.getConnection(this.url, this.user, this.password);
@@ -29,4 +34,7 @@ public class Conexion {
     }
     return con;
   }
+  
+  
+      
 }

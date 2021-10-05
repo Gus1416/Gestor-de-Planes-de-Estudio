@@ -9,6 +9,10 @@ import java.util.ArrayList;
  * @version 1.0 26/09/2021
  */
 public class Escuela {
+
+    static void addItem(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
   private String nombre;
   private String codigo;
   //private ArrayList<PlanesEstudio> planesEstudio;
