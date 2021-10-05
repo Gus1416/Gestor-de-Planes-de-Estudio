@@ -4,17 +4,6 @@
  * and open the template in the editor.
  */
 package vista;
-import modelo.Curso;
-import gestorplanesestudio.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import modelo.Escuela;
-
-import modelo.Conexion;
 
 /**
  *
@@ -27,7 +16,6 @@ public class RegistroCurso extends javax.swing.JFrame {
      */
     public RegistroCurso() {
         initComponents();
-        llenar_escuelas();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -178,27 +166,7 @@ public class RegistroCurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void llenar_escuelas(){
-        try{
-            PreparedStatement ps;
-            ResultSet rs;
     
-            Connection con;
-            con = Conexion.getConexion();
-            
-            ps = con.prepareStatement("SELECT nombre_escuela FROM escuela");
-
-            rs = ps.executeQuery();
-            EscuelaCb.addItem("Escuelas");
-            while (rs.next()) {
-                EscuelaCb.addItem(rs.getString("nombre_escuela"));
-            }
-        }
-  
-         catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
