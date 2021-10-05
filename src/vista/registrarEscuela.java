@@ -87,6 +87,11 @@ public class registrarEscuela extends javax.swing.JFrame {
         });
 
         btnLimpiarCampos.setText("Limpiar campos");
+        btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarCamposActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,6 +139,10 @@ public class registrarEscuela extends javax.swing.JFrame {
     private void btnRegistrarEscuelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEscuelaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarEscuelaActionPerformed
+
+    private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCamposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarCamposActionPerformed
 
   /**
    * @param args the command line arguments

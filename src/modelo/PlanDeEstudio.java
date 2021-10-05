@@ -15,36 +15,38 @@ import java.util.ArrayList;
 
 public class PlanDeEstudio {
     
-    private String iD;
+    private int iD;
     private Escuela EscuelaPropietaria;
     private LocalDate fechaVigencia;
-    private ArrayList bloques;
+    private String bloques;
     private String CodigoCurso;
 
     public PlanDeEstudio() {
    
     }
 
-       
-    public PlanDeEstudio(String iD, Escuela EscuelaPropietaria, LocalDate fechaVigencia, ArrayList bloques) {
+    public PlanDeEstudio(int iD, Escuela EscuelaPropietaria, LocalDate fechaVigencia, String bloques, String CodigoCurso) {
         this.iD = iD;
         this.EscuelaPropietaria = EscuelaPropietaria;
         this.fechaVigencia = fechaVigencia;
         this.bloques = bloques;
+        this.CodigoCurso = CodigoCurso;
     }
+
+       
  
     
     /**
      * @return the iD
      */
-    public String getiD() {
+    public int getiD() {
         return iD;
     }
 
     /**
      * @param iD the iD to set
      */
-    public void setiD(String iD) {
+    public void setiD(int iD) {
         this.iD = iD;
     }
 
@@ -62,19 +64,7 @@ public class PlanDeEstudio {
         this.fechaVigencia = fechaVigencia;
     }
 
-    /**
-     * @return the bloques
-     */
-    public ArrayList getBloques() {
-        return bloques;
-    }
-
-    /**
-     * @param bloques the bloques to set
-     */
-    public void setBloques(String bloques) {
-        this.bloques.add(bloques);
-    }
+    
 
     
     public Escuela getEscuelaPropietaria() {
@@ -95,16 +85,23 @@ public class PlanDeEstudio {
     
 
     public void setEscuelaPropietaria(String EscuelaPropietaria, ArrayList<Escuela> Escuelas ) {
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Este es el nombre de la escuela que me llega bro: " + EscuelaPropietaria);
         
-        for(int i=0 ; i< Escuelas.size(); i++){ 
-            if(EscuelaPropietaria.matches(Escuelas.get(i).getNombre())){
+        System.out.println("Este es el size del array que me llegó " + Escuelas.size());
+       
+        
+        for(int i=0 ; i< Escuelas.size(); i++){     
+            if(EscuelaPropietaria.equals(Escuelas.get(i).getNombre()) == true){
                 this.setEscuelaPropietaria(Escuelas.get(i));
-            }
+                System.out.println("MAE ENCONTRÉ LA ESCUELA :) ");
+            }   
             else{
-                System.out.println("Escuela No Existe");
+                
             }
-            
-        }    
+        }
+        
         
     }
 
@@ -113,6 +110,20 @@ public class PlanDeEstudio {
      */
     public void setEscuelaPropietaria(Escuela EscuelaPropietaria) {
         this.EscuelaPropietaria = EscuelaPropietaria;
+    }
+
+    /**
+     * @return the bloques
+     */
+    public String getBloques() {
+        return bloques;
+    }
+
+    /**
+     * @param bloques the bloques to set
+     */
+    public void setBloques(String bloques) {
+        this.bloques = bloques;
     }
    
     

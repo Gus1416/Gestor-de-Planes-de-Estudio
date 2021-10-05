@@ -40,7 +40,7 @@ public class registrarPlan extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         btnLimpiarCampos = new javax.swing.JButton();
         DateChooser = new com.toedter.calendar.JDateChooser();
-        tfCodigoPlan = new javax.swing.JTextField();
+        tfPlanCode = new javax.swing.JTextField();
         cbCodigosCurso = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +84,7 @@ public class registrarPlan extends javax.swing.JFrame {
             }
         });
 
-        cbCodigosCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cod1", "Cod2", "Cod3", "Cod4", "Cod5" }));
+        cbCodigosCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AE-01", "Cod2", "Cod3", "Cod4", "Cod5" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +103,7 @@ public class registrarPlan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cbEscuelaPlan, javax.swing.GroupLayout.Alignment.LEADING, 0, 200, Short.MAX_VALUE)
                             .addComponent(DateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfCodigoPlan, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(tfPlanCode, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(206, 206, 206)))
@@ -149,7 +149,7 @@ public class registrarPlan extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfCodigoPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfPlanCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -184,7 +184,7 @@ public class registrarPlan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCamposActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Boton pulsado porqué putas no recibe la vara : ");
     }//GEN-LAST:event_btnLimpiarCamposActionPerformed
 
     /**
@@ -247,6 +247,6 @@ public class registrarPlan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    public javax.swing.JTextField tfCodigoPlan;
+    public javax.swing.JTextField tfPlanCode;
     // End of variables declaration//GEN-END:variables
 }

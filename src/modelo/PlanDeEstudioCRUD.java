@@ -22,14 +22,15 @@ public class PlanDeEstudioCRUD extends Conexion {
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-    String sql = "CALL registrar_plan(?,?,?)";
+    String sql = "CALL registrar_plan(?,?,?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, plan.getiD());
+      ps.setInt(1, plan.getiD());
       ps.setString(2, plan.getEscuelaPropietaria().getNombre());
       ps.setDate(3,java.sql.Date.valueOf(plan.getFechaVigencia()));
-     // ps.setObject(4,plan.getBloques().toArray());
+      ps.setString(4,plan.getBloques());
+      ps.setString(5,plan.getCodigoCurso());
       ps.execute();
       return true;
       

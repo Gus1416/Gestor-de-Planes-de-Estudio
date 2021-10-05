@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import modelo.PlanDeEstudio;
 import modelo.PlanDeEstudioCRUD;
 import vista.registrarPlan;
-import controlador.CtrlEscuela;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -20,12 +19,10 @@ import java.util.Date;
  * @author sebcor
  */
 public class CtrlPlanesEstudio implements ActionListener {
-  
-  CtrlEscuela aux = new CtrlEscuela();  
     
-  private PlanDeEstudio plan;
-  private PlanDeEstudioCRUD planCrud;
-  private registrarPlan regPlan;
+  private final PlanDeEstudio plan;
+  private final PlanDeEstudioCRUD planCrud;
+  private final registrarPlan regPlan;
   
   
   
@@ -34,45 +31,61 @@ public class CtrlPlanesEstudio implements ActionListener {
     this.planCrud = pPlanCRUD;
     this.regPlan = pRegPlan;
     this.regPlan.btnRegistrarPlan.addActionListener(this);
+    this.regPlan.btnLimpiarCampos.addActionListener(this);
   }
   
   public void iniciar(){
-    regPlan.setTitle("Gestor de Planes de Estudio");
+    regPlan.setTitle("Gestor de Planes de Estudio");  
     regPlan.setLocationRelativeTo(null);
   }
   
   @Override
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == regPlan.btnRegistrarPlan){
-      plan.setiD(regPlan.tfCodigoPlan.getText());
-      plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getName(), aux.getEscuelas());
-      plan.setCodigoCurso(regPlan.cbCodigosCurso.getName());
-      Date input = regPlan.DateChooser.getCalendar().getTime();  // Obtener la fecha directa desde JDateChooser
-      plan.setFechaVigencia(input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        
+   
       
+    System.out.println("Se supone que esto me tiene que traer la lista: " + CtrlEscuela.escuelas.get(0).getNombre());  
+    
+     // Date input = regPlan.DateChooser.getCalendar().getTime(); 
+     // System.out.println("Codigo del Plan: " + regPlan.tfPlanCode.getText());  
+     // System.out.println("Escuela Propietaria del plan: " + regPlan.cbEscuelaPlan.getSelectedItem().toString() );  
+        System.out.println("Codigo de curso asociado al plan: " + regPlan.cbCodigosCurso.getSelectedItem().toString() );  
+     // System.out.println("Bloque asociado al plan: " + regPlan.cbBloques.getSelectedItem().toString());  
+    //  System.out.println("Fecha de vigencia del plan:" +  input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString());
+     // System.out.println("Se supone que esto me tiene que traer la lista: " + CtrlEscuela.escuelas.get(0).getNombre()); 
+    
+    
+    
+    
+    plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
+    plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(), CtrlEscuela.escuelas);
+    plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());
+    Date input = regPlan.DateChooser.getCalendar().getTime();  // Obtener la fecha directa desde JDateChooser
+    plan.setFechaVigencia(input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+    plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
      
-      plan.setBloques(regPlan.cbBloques.getName()); // Hay que buscar cómo crear la matriz de bloques, consultar al equipo
-      
-      
+     
       
       if (planCrud.registrar(plan)){
         JOptionPane.showMessageDialog(null, "Plan Registrado");
-        limpiar();
+        limpiarPlan();
       } else {
         JOptionPane.showMessageDialog(null, "Error al registrar el plan");
-        limpiar();
+        limpiarPlan();
       }
+      
+      
     }
     
     if (e.getSource() == regPlan.btnLimpiarCampos){
-      limpiar();
+      limpiarPlan();  
     }
   }
   
-  public void limpiar(){
+  public void limpiarPlan(){
    // regPlan.tfCodigoCursoPlan.setText(null);
-    regPlan.tfCodigoPlan.setText(null);
-  
+   //   regPlan.tfPlanCode.setText(null);
   }
 
 

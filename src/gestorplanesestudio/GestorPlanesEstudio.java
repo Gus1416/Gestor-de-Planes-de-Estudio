@@ -2,6 +2,7 @@ package gestorplanesestudio;
 
 import controlador.CtrlEscuela;
 import controlador.CtrlPlanesEstudio;
+import java.util.ArrayList;
 import modelo.Escuela;
 import modelo.EscuelaCRUD;
 import modelo.PlanDeEstudio;
@@ -26,7 +27,9 @@ public class GestorPlanesEstudio {
         Escuela escuela = new Escuela();
         EscuelaCRUD escuelaCrud = new EscuelaCRUD();
         registrarEscuela regEscuela = new registrarEscuela();
-        CtrlEscuela ctrlEscuela = new CtrlEscuela(escuela, escuelaCrud, regEscuela);
+        ArrayList<Escuela> escuelas = new ArrayList<Escuela>();
+        
+        CtrlEscuela ctrlEscuela = new CtrlEscuela(escuela, escuelaCrud, regEscuela,escuelas);
         ctrlEscuela.iniciar();
         regEscuela.setVisible(true);
         
