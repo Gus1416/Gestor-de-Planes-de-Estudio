@@ -35,6 +35,7 @@ public class RegistrarEscuela extends javax.swing.JFrame {
     tfCodigoEscuela = new javax.swing.JTextField();
     btnRegistrarEscuela = new javax.swing.JButton();
     btnLimpiarCampos = new javax.swing.JButton();
+    btnVolver = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,13 @@ public class RegistrarEscuela extends javax.swing.JFrame {
 
     btnLimpiarCampos.setText("Limpiar campos");
 
+    btnVolver.setText("Volver");
+    btnVolver.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnVolverActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -98,10 +106,12 @@ public class RegistrarEscuela extends javax.swing.JFrame {
                 .addGap(105, 105, 105)
                 .addComponent(jLabel1))
               .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(38, 38, 38)
                 .addComponent(btnRegistrarEscuela)
                 .addGap(18, 18, 18)
-                .addComponent(btnLimpiarCampos)))
+                .addComponent(btnLimpiarCampos)
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGap(0, 0, Short.MAX_VALUE)))
         .addContainerGap())
     );
@@ -115,7 +125,8 @@ public class RegistrarEscuela extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(btnRegistrarEscuela)
-          .addComponent(btnLimpiarCampos))
+          .addComponent(btnLimpiarCampos)
+          .addComponent(btnVolver))
         .addGap(55, 55, 55))
     );
 
@@ -125,6 +136,10 @@ public class RegistrarEscuela extends javax.swing.JFrame {
   private void tfCodigoEscuelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoEscuelaActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_tfCodigoEscuelaActionPerformed
+
+  private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnVolverActionPerformed
 
   /**
    * @param args the command line arguments
@@ -178,6 +193,7 @@ public class RegistrarEscuela extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnLimpiarCampos;
   public javax.swing.JButton btnRegistrarEscuela;
+  public javax.swing.JButton btnVolver;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;

@@ -1,9 +1,7 @@
 package gestorplanesestudio;
 
-import controlador.CtrlEscuela;
-import modelo.Escuela;
-import modelo.EscuelaCRUD;
-import vista.RegistrarEscuela;
+import controlador.CtrlMenu;
+import vista.Menu;
 
 /**
  * Main class
@@ -19,13 +17,9 @@ public class GestorPlanesEstudio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Escuela escuela = new Escuela();
-        EscuelaCRUD escuelaCrud = new EscuelaCRUD();
-        RegistrarEscuela regEscuela = new RegistrarEscuela();
-        
-        CtrlEscuela ctrlEscuela = new CtrlEscuela(escuela, escuelaCrud, regEscuela);
-        ctrlEscuela.iniciar();
-        regEscuela.setVisible(true);
+        Menu menu = new Menu();
+        CtrlMenu ctrlMenu = new CtrlMenu(menu);
+        ctrlMenu.iniciar();
+        menu.setVisible(true);
     }
-    
 }

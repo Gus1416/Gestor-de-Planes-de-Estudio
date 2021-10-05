@@ -22,6 +22,7 @@ public class CtrlEscuela implements ActionListener {
     this.regEscuela = pRegEscuela;
     this.regEscuela.btnRegistrarEscuela.addActionListener(this);
     this.regEscuela.btnLimpiarCampos.addActionListener(this);
+    this.regEscuela.btnVolver.addActionListener(this);
   }
   
   public void iniciar(){
@@ -54,6 +55,10 @@ public class CtrlEscuela implements ActionListener {
     
     if (e.getSource() == regEscuela.btnLimpiarCampos){
       limpiar();
+    }
+    
+    if (e.getSource() == regEscuela.btnVolver){
+      regEscuela.setVisible(false);
     }
   }
   
