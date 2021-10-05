@@ -2,16 +2,12 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Curso;
 import modelo.CursoCRUD;
+import modelo.EscuelaCRUD;
 import vista.RegistroCurso;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import modelo.Conexion;
 
 /**
  *
@@ -21,18 +17,27 @@ public class CtrlCurso implements ActionListener {
   private Curso curso;
   private CursoCRUD cursoCrud;
   private RegistroCurso regCurso;
+  private EscuelaCRUD consultarEscuelas;
  
-  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso){
+  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso, EscuelaCRUD pEscuelaCrud){
     this.curso = pCurso;
     this.cursoCrud = pCursoCrud;
     this.regCurso = pRegCurso;
+    this.consultarEscuelas = pEscuelaCrud;
     this.regCurso.RegistrarBt.addActionListener(this);
   }
   
   public void iniciar(){
+    cargarEscuelas();
     regCurso.setTitle("Gestor de Planes de Estudio");
     regCurso.setLocationRelativeTo(null);
-    
+  }
+  
+  public void cargarEscuelas(){
+    ArrayList<String> escuelas = consultarEscuelas.consultar();
+    for (String escuela : escuelas){
+      regCurso.EscuelaCb.addItem(escuela);
+    }
   }
     
   @Override
@@ -42,8 +47,6 @@ public class CtrlCurso implements ActionListener {
       curso.setNombreCurso(regCurso.txtNombre.getText());
       curso.setHorasLectivas((String)((regCurso.HorasCb.getSelectedItem())));
       curso.setCreditos(((String) regCurso.CreditosCb.getSelectedItem()));
-      
-      
       
       if (cursoCrud.registrar(curso)){
         JOptionPane.showMessageDialog(null, "Curso Registrado");

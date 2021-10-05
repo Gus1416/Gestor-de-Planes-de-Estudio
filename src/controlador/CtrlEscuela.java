@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Escuela;
 import modelo.EscuelaCRUD;
-import vista.registrarEscuela;
+import vista.RegistrarEscuela;
 
 /**
  *
@@ -14,16 +14,17 @@ import vista.registrarEscuela;
 public class CtrlEscuela implements ActionListener {
   private Escuela escuela;
   private EscuelaCRUD escuelaCrud;
-  private registrarEscuela regEscuela;
+  private RegistrarEscuela regEscuela;
   
-  public CtrlEscuela(Escuela pEscuela, EscuelaCRUD pEscuelaCrud, registrarEscuela pRegEscuela){
+  public CtrlEscuela(Escuela pEscuela, EscuelaCRUD pEscuelaCrud, RegistrarEscuela pRegEscuela){
     this.escuela = pEscuela;
     this.escuelaCrud = pEscuelaCrud;
     this.regEscuela = pRegEscuela;
     this.regEscuela.btnRegistrarEscuela.addActionListener(this);
     this.regEscuela.btnLimpiarCampos.addActionListener(this);
+    this.regEscuela.btnVolver.addActionListener(this);
   }
-  
+ 
   public void iniciar(){
     regEscuela.setTitle("Gestor de Planes de Estudio");
     regEscuela.setLocationRelativeTo(null);
@@ -54,6 +55,10 @@ public class CtrlEscuela implements ActionListener {
     
     if (e.getSource() == regEscuela.btnLimpiarCampos){
       limpiar();
+    }
+    
+    if (e.getSource() == regEscuela.btnVolver){
+      regEscuela.setVisible(false);
     }
   }
   

@@ -18,28 +18,7 @@ import vista.RegistroCurso;
  */
 public class CursoCRUD  extends Conexion{
     private RegistroCurso regCurso;
-     
-    
-    /**public void llenar_escuelas(){
-        try{
-            PreparedStatement ps;
-            ResultSet rs;
-    
-            Connection con = getConexion();
-            ps = con.prepareStatement("SELECT nombre_escuela FROM escuela");
 
-            rs = ps.executeQuery();
-            regCurso.EscuelaCb.addItem("Escuela");
-            while (rs.next()) {
-                regCurso.EscuelaCb.addItem(rs.getString("nombre_escuela"));
-            }
-        }
-  
-         catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
-   **/
     public boolean registrar(Curso curso){
     PreparedStatement ps = null;
     Connection con = getConexion();
