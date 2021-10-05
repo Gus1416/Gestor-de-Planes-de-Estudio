@@ -1,9 +1,13 @@
 package gestorplanesestudio;
 
 import controlador.CtrlEscuela;
+import controlador.CtrlPlanesEstudio;
 import modelo.Escuela;
 import modelo.EscuelaCRUD;
+import modelo.PlanDeEstudio;
+import modelo.PlanDeEstudioCRUD;
 import vista.registrarEscuela;
+import vista.registrarPlan;
 
 /**
  * Main class
@@ -22,10 +26,25 @@ public class GestorPlanesEstudio {
         Escuela escuela = new Escuela();
         EscuelaCRUD escuelaCrud = new EscuelaCRUD();
         registrarEscuela regEscuela = new registrarEscuela();
-        
         CtrlEscuela ctrlEscuela = new CtrlEscuela(escuela, escuelaCrud, regEscuela);
         ctrlEscuela.iniciar();
         regEscuela.setVisible(true);
+        
+        
+        
+       PlanDeEstudio plan = new PlanDeEstudio();
+       PlanDeEstudioCRUD planCrud= new PlanDeEstudioCRUD();
+       registrarPlan regPlan = new registrarPlan();
+        
+       CtrlPlanesEstudio ctrlPlan= new CtrlPlanesEstudio(plan,planCrud,regPlan);
+        
+       ctrlPlan.iniciar();
+       regPlan.setVisible(true);
+        
+        
+        
+        
+        
     }
     
 }
