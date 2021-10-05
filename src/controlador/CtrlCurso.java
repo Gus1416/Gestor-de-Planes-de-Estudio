@@ -2,10 +2,16 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import modelo.Curso;
 import modelo.CursoCRUD;
 import vista.RegistroCurso;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import modelo.Conexion;
 
 /**
  *
@@ -26,6 +32,7 @@ public class CtrlCurso implements ActionListener {
   public void iniciar(){
     regCurso.setTitle("Gestor de Planes de Estudio");
     regCurso.setLocationRelativeTo(null);
+    
   }
     
   @Override

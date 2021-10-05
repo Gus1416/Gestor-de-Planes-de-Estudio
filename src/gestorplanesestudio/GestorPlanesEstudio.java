@@ -34,10 +34,13 @@ public class GestorPlanesEstudio {
         
         Curso curso= new Curso();
         CursoCRUD cursoCrud= new CursoCRUD();
+      
         RegistroCurso regCurso= new RegistroCurso();
         
         CtrlCurso ctrlCurso = new CtrlCurso(curso,cursoCrud, regCurso);
         ctrlCurso.iniciar();
+      
+      
         regCurso.setVisible(true);
     }
     
