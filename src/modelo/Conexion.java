@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class Conexion {
   private final String base = "db_gestor_planes_estudio";
-  private final String password = "12345";
+  private final String password = "1234";
   private final String user = "root";
   private final String url = "jdbc:mysql://localhost:3306/" + base;
   private Connection con = null;
