@@ -68,3 +68,4 @@ public class CtrlCurso implements ActionListener {
     regCurso.HorasCb.setSelectedItem(1);
   }
 }
+

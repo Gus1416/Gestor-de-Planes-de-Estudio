@@ -103,5 +103,4 @@ public Curso (String pIdCurso, String pNombre, int pCreditos, int pHorasLectivas
     public void setHorasLectivas(String horasLectivas) {
         this.horasLectivas = horasLectivas;
     }
-
 }
