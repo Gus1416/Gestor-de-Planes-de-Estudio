@@ -59,8 +59,10 @@ public class CtrlMenu implements ActionListener {
       PlanDeEstudio plan = new PlanDeEstudio();
       PlanDeEstudioCRUD planCrud= new PlanDeEstudioCRUD();
       registrarPlan regPlan = new registrarPlan();
+      EscuelaCRUD consultarEscuelas = new EscuelaCRUD();
+      CursoCRUD consultarCursos = new CursoCRUD();
         
-      CtrlPlanesEstudio ctrlPlan= new CtrlPlanesEstudio(plan,planCrud,regPlan);
+      CtrlPlanesEstudio ctrlPlan= new CtrlPlanesEstudio(plan,planCrud,regPlan,consultarEscuelas,consultarCursos);
       ctrlPlan.iniciar();
       regPlan.setVisible(true);
     }

@@ -78,21 +78,18 @@ public class PlanDeEstudio {
     public void setCodigoCurso(String CodigoCurso) {
         this.CodigoCurso = CodigoCurso;
     }
-    
-    
-    
-  
-    
 
-    public void setEscuelaPropietaria(String EscuelaPropietaria, ArrayList<Escuela> Escuelas ) {
+    public void setEscuelaPropietaria(String EscuelaPropietaria, ArrayList<Escuela> Escuelas) {
         System.out.println("");
         System.out.println("");
         System.out.println("Este es el nombre de la escuela que me llega bro: " + EscuelaPropietaria);
         
-        System.out.println("Este es el size del array que me llegó " + Escuelas.size());
-       
+       // System.out.println("Este es el size del array que me llegó " + Escuelas.size());
         
-        for(int i=0 ; i< Escuelas.size(); i++){     
+        for(int i=0 ; i< Escuelas.size(); i++){
+            
+            System.out.println("Nombre de las escuelas que me llegan:" + Escuelas.get(i).getNombre());
+            
             if(EscuelaPropietaria.equals(Escuelas.get(i).getNombre()) == true){
                 this.setEscuelaPropietaria(Escuelas.get(i));
                 System.out.println("MAE ENCONTRÉ LA ESCUELA :) ");
@@ -101,9 +98,14 @@ public class PlanDeEstudio {
                 
             }
         }
-        
-        
     }
+    
+    
+    
+  
+    
+
+   
 
     /**
      * @param EscuelaPropietaria the EscuelaPropietaria to set
