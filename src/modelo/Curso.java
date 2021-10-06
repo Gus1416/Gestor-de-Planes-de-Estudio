@@ -15,6 +15,7 @@ private String idCurso;
 private String nombreCurso;
 private String creditos;
 private String horasLectivas;
+private String escuela;
 
 /**
 private ArrayList<Correquisitos> correquisitos;
@@ -51,6 +52,14 @@ public Curso (String pIdCurso, String pNombre, int pCreditos, int pHorasLectivas
     /**
      * @return the idCurso
      */
+
+    public String getEscuela(){
+        return escuela;
+    }
+    public void setEscuela(String pEscuela){
+        this.escuela=pEscuela;
+    }
+    
     public String getIdCurso() {
         return idCurso;
     }

@@ -26,7 +26,7 @@ public class CursoCRUD  extends Conexion{
     String sql = "CALL registrar_curso(?,?,?,?,?)";
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, "Diseño Industrial");
+      ps.setString(1,curso.getEscuela());
       ps.setString(2, curso.getNombreCurso());
       ps.setString(3,curso.getIdCurso());
       ps.setString(4, curso.getCreditos());
