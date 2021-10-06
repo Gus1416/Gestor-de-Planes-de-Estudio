@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
     jLabel1 = new javax.swing.JLabel();
     btnRegistrarEscuela = new javax.swing.JButton();
     btnRegistrarCurso = new javax.swing.JButton();
+    btnRegistrarPlan = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,6 +38,8 @@ public class Menu extends javax.swing.JFrame {
     btnRegistrarEscuela.setText("Registrar Escuela");
 
     btnRegistrarCurso.setText("Registrar Curso");
+
+    btnRegistrarPlan.setText("Registrar Plan");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -50,7 +53,8 @@ public class Menu extends javax.swing.JFrame {
         .addGap(30, 30, 30)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
           .addComponent(btnRegistrarEscuela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(btnRegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          .addComponent(btnRegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(btnRegistrarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
@@ -62,7 +66,9 @@ public class Menu extends javax.swing.JFrame {
         .addComponent(btnRegistrarEscuela)
         .addGap(18, 18, 18)
         .addComponent(btnRegistrarCurso)
-        .addContainerGap(177, Short.MAX_VALUE))
+        .addGap(18, 18, 18)
+        .addComponent(btnRegistrarPlan)
+        .addContainerGap(134, Short.MAX_VALUE))
     );
 
     pack();
@@ -113,6 +119,7 @@ public class Menu extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnRegistrarCurso;
   public javax.swing.JButton btnRegistrarEscuela;
+  public javax.swing.JButton btnRegistrarPlan;
   private javax.swing.JLabel jLabel1;
   // End of variables declaration//GEN-END:variables
 }

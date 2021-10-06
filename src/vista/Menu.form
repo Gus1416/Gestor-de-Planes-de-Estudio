@@ -33,6 +33,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnRegistrarEscuela" max="32767" attributes="0"/>
                   <Component id="btnRegistrarCurso" max="32767" attributes="0"/>
+                  <Component id="btnRegistrarPlan" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -47,7 +48,9 @@
               <Component id="btnRegistrarEscuela" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnRegistrarCurso" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="177" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnRegistrarPlan" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,6 +72,14 @@
     <Component class="javax.swing.JButton" name="btnRegistrarCurso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar Curso"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegistrarPlan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar Plan"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
