@@ -59,9 +59,7 @@ public class registrarPlan extends javax.swing.JFrame {
 
         jLabel6.setText("Código del curso que forma parte del plan: ");
 
-        cbEscuelaPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administración de Empresas", "Escuela de CI", "Escuela de IDI" }));
-
-        cbBloques.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bloque 1", "Bloque 2", "Bloque 3", "Bloque 4" }));
+        cbBloques.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bloque 1", "Bloque 2", "Bloque 3", "Bloque 4", "Bloque 5", "Bloque 6", "Bloque 7", "Bloque 8", "Bloque 9", "Bloque 10" }));
 
         btnRegistrarPlan.setText("Registar Plan de Estudios");
         btnRegistrarPlan.addActionListener(new java.awt.event.ActionListener() {
@@ -83,8 +81,6 @@ public class registrarPlan extends javax.swing.JFrame {
                 btnLimpiarCamposActionPerformed(evt);
             }
         });
-
-        cbCodigosCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AE-01", "Cod2", "Cod3", "Cod4", "Cod5" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

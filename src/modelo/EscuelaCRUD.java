@@ -18,7 +18,19 @@ public class EscuelaCRUD extends Conexion {
    * Método para registrar la escuela
    * @param escuela objeto de tipo Escuela
    * @return true si se realiza la operación, false en caso contrario
+   * 
    */
+    
+  public static ArrayList<Escuela> ESCUELAOBJ = new ArrayList<Escuela>();  
+
+    public ArrayList<Escuela> getESCUELAOBJ() {
+        return ESCUELAOBJ;
+    }
+  
+  
+  
+  
+    
   public boolean registrar(Escuela escuela){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -52,6 +64,10 @@ public class EscuelaCRUD extends Conexion {
     Connection con = getConexion();
     Escuela escuela = new Escuela();
     ArrayList<String> escuelas = new ArrayList<>();
+   
+    
+    
+    int x = 0;
     
     String sql = "SELECT * FROM escuela";
     
@@ -60,9 +76,18 @@ public class EscuelaCRUD extends Conexion {
       rs = ps.executeQuery();
       
       while(rs.next()){ 
+          
+        Escuela contenedor = new Escuela(rs.getString("nombre_escuela"),rs.getString("id_escuela"));
+             
         escuela.setCodigo(rs.getString("id_escuela"));
         escuela.setNombre(rs.getString("nombre_escuela"));
         escuelas.add(escuela.getNombre());
+
+        ESCUELAOBJ.add(contenedor);
+        System.out.println("Estos son las escuelas del array:" +  ESCUELAOBJ.get(x).getNombre());
+          
+        x++;  
+
         
       }
      

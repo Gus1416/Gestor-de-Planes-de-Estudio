@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import vista.RegistroCurso;
 
@@ -41,6 +42,51 @@ public class CursoCRUD  extends Conexion{
       }
     }
   }
+    
+    public ArrayList<String> consultar(){
+    
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Curso curso = new Curso();
+    ArrayList<String> codigos = new ArrayList<>();
+    
+    String sql = "SELECT * FROM curso";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      rs = ps.executeQuery();
+      
+      while(rs.next()){ 
+        curso.setCreditos(rs.getString("creditos"));
+        curso.setHorasLectivas(rs.getString("nombre_curso"));
+        curso.setIdCurso(rs.getString("id_curso"));
+        curso.setNombreCurso(rs.getString("horas_lectivas"));
+        codigos.add(curso.getIdCurso());
+      }
+     
+      return codigos;
+      
+    } catch (SQLException e){
+      System.err.println(e);
+      return codigos;
+      
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e){
+        System.err.println(e);
+      }
+    }
+  }
+    
+    
+    
+    
+    
+    
+    
+    
     
     public boolean eliminar(Curso curso){
     PreparedStatement ps = null;
