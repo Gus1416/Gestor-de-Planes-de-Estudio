@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/EscuelaCRUD.java</file>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/vista/registrarPlan.java</file>
             <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/PlanDeEstudio.java</file>
-            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/controlador/CtrlCurso.java</file>
-            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/PlanDeEstudioCRUD.java</file>
-            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/controlador/CtrlMenu.java</file>
-            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/Escuela.java</file>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/CursoCRUD.java</file>
             <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/controlador/CtrlPlanesEstudio.java</file>
         </group>
     </open-files>

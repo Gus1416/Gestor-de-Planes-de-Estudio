@@ -9,6 +9,7 @@ import modelo.CursoCRUD;
 import modelo.EscuelaCRUD;
 import vista.RegistroCurso;
 
+
 /**
  *
  * @author María Laura
@@ -18,19 +19,21 @@ public class CtrlCurso implements ActionListener {
   private CursoCRUD cursoCrud;
   private RegistroCurso regCurso;
   private EscuelaCRUD consultarEscuelas;
+  
  
-  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso, EscuelaCRUD pEscuelaCrud){
+  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso,EscuelaCRUD pEscuelaCrud){
     this.curso = pCurso;
     this.cursoCrud = pCursoCrud;
     this.regCurso = pRegCurso;
     this.consultarEscuelas = pEscuelaCrud;
     this.regCurso.RegistrarBt.addActionListener(this);
+    
   }
   
   public void iniciar(){
-    cargarEscuelas();
+    cargarEscuelas();  // 
     regCurso.setTitle("Gestor de Planes de Estudio");
-    regCurso.setLocationRelativeTo(null);
+    regCurso.setLocationRelativeTo(null);    
   }
   
   public void cargarEscuelas(){
@@ -43,6 +46,7 @@ public class CtrlCurso implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == regCurso.RegistrarBt){
+      curso.setEscuela((String)regCurso.EscuelaCb.getSelectedItem());
       curso.setIdCurso(regCurso.txtCodigo.getText());
       curso.setNombreCurso(regCurso.txtNombre.getText());
       curso.setHorasLectivas((String)((regCurso.HorasCb.getSelectedItem())));
