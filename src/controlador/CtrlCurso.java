@@ -43,6 +43,7 @@ public class CtrlCurso implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == regCurso.RegistrarBt){
+      curso.setEscuela((String)regCurso.EscuelaCb.getSelectedItem());
       curso.setIdCurso(regCurso.txtCodigo.getText());
       curso.setNombreCurso(regCurso.txtNombre.getText());
       curso.setHorasLectivas((String)((regCurso.HorasCb.getSelectedItem())));
