@@ -40,7 +40,7 @@ public class registrarRequisitos extends javax.swing.JFrame {
         CBrequisitos = new javax.swing.JComboBox<>();
         btnRegistrarCorrequisito = new javax.swing.JButton();
         btnRegistrarRequisito = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         btnCargarCursos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,10 +86,10 @@ public class registrarRequisitos extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Volver");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -140,7 +140,7 @@ public class registrarRequisitos extends javax.swing.JFrame {
                 .addGap(84, 84, 84)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnVolver)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,7 +161,7 @@ public class registrarRequisitos extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3)))
+                        .addComponent(btnVolver)))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -209,9 +209,9 @@ public class registrarRequisitos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBrequisitosActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void CBEscuelas_CursosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBEscuelas_CursosItemStateChanged
         // TODO add your handling code here:
@@ -264,7 +264,7 @@ public class registrarRequisitos extends javax.swing.JFrame {
     public javax.swing.JButton btnCargarCursos;
     public javax.swing.JButton btnRegistrarCorrequisito;
     public javax.swing.JButton btnRegistrarRequisito;
-    public javax.swing.JButton jButton3;
+    public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

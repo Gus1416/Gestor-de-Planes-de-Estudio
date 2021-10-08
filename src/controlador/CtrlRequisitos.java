@@ -133,6 +133,10 @@ public class CtrlRequisitos implements ActionListener{
         
        
             if(e.getSource() == regRequisitos.btnCargarCursos){
+              regRequisitos.CBcodigos_cursos.removeAllItems();
+              regRequisitos.CBcorrequisitos.removeAllItems();
+              regRequisitos.CBrequisitos.removeAllItems();
+                      
               String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.ESCUELAOBJ,regRequisitos.CBEscuelas_Cursos.getSelectedItem().toString());
               System.out.println("Mae este es el codigo que mellega de su metodo:" + codigo);
               ArrayList<String> codigos = consultarCodigos.consultarCodigos(codigo);
@@ -142,7 +146,11 @@ public class CtrlRequisitos implements ActionListener{
                 regRequisitos.CBrequisitos.addItem(code);
                   }
              }
- 
+            
+            
+            if (e.getSource() == regRequisitos.btnVolver){
+                regRequisitos.setVisible(false);
+            }
   
                    
     }

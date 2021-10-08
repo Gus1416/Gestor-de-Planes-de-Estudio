@@ -54,19 +54,19 @@ public class CursoCRUD  extends Conexion{
   }
     
     
-    public boolean registrarCorrequisito(Curso BRO){
+    public boolean registrarCorrequisito(Curso Correquisito){
     PreparedStatement ps = null;
     Connection con = getConexion();
     
     String sql = "CALL asignar_correquisito(?,?)";
     try{
         
-      System.out.println("Obtengo estos valores de BRO:" + BRO.getIdCurso() );  
-      System.out.println("Obtengo estos valores de BRO:" + BRO.getAuxRrequisitos() );  
+      System.out.println("Obtengo estos valores de Correquisito:" + Correquisito.getIdCurso() );  
+      System.out.println("Obtengo estos valores de Correquisito:" + Correquisito.getAuxRrequisitos() );  
         
       ps = con.prepareStatement(sql);
-      ps.setString(1, BRO.getIdCurso());
-      ps.setString(2, BRO.getAuxCorrequisitos());
+      ps.setString(1, Correquisito.getIdCurso());
+      ps.setString(2, Correquisito.getAuxCorrequisitos());
       ps.execute();
       return true;
       
@@ -84,22 +84,21 @@ public class CursoCRUD  extends Conexion{
   }
     
    
-    public boolean registrarRequisito(Curso sera){
+    public boolean registrarRequisito(Curso requisito){
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-        System.out.println("ESTOY ENTRANDO AL ASIGNAR REQUISITO");
     
     String sql = "CALL asignar_requisito(?,?)";
     
     try{
         
-        System.out.println("Obtengo estos valores de SERA:" + sera.getIdCurso() );  
-        System.out.println("Obtengo estos valores de SERA:" + sera.getAuxRrequisitos() );
+        System.out.println("Obtengo estos valores de requisito:" + requisito.getIdCurso() );  
+        System.out.println("Obtengo estos valores de requisito:" + requisito.getAuxRrequisitos() );
         
       ps = con.prepareStatement(sql);
-      ps.setString(1, sera.getIdCurso());
-      ps.setString(2, sera.getAuxRrequisitos());
+      ps.setString(1, requisito.getIdCurso());
+      ps.setString(2, requisito.getAuxRrequisitos());
       ps.execute();
       return true;
       
@@ -237,6 +236,8 @@ public class CursoCRUD  extends Conexion{
       }
     }
   }
+    
+ 
     
     
 }
