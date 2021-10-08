@@ -63,6 +63,7 @@ public class EscuelaCRUD extends Conexion {
         escuela.setCodigo(rs.getString("id_escuela"));
         escuela.setNombre(rs.getString("nombre_escuela"));
         escuelas.add(escuela.getNombre());
+        
       }
      
       return escuelas;
