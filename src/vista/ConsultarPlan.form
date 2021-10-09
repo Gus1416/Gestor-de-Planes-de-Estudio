@@ -84,7 +84,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbEscuelas" pref="206" max="32767" attributes="0"/>
+                          <Component id="cbEscuelas" pref="260" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -108,7 +108,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Escuela propietaria:"/>
+            <Property name="text" type="java.lang.String" value="Escuela:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbEscuelas">

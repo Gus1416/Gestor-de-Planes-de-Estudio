@@ -3,9 +3,11 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import modelo.EscuelaCRUD;
 import modelo.PlanDeEstudioCRUD;
 import vista.ConsultarPlan;
+import java.sql.SQLException;
 
 /**
  *
@@ -37,9 +39,36 @@ public class CtrlConsultaPlanes implements ActionListener {
       consultaPlan.cbEscuelas.addItem(escuela);
     }
   }
+  
+  public void mostrarInfoPlan(){
+    String escuela = (String)this.consultaPlan.cbEscuelas.getSelectedItem();
+    String[] info = planCrud.consultarInfoPlan(escuela);
+    this.consultaPlan.tfCodigoPlan.setText(info[0]);
+    //this.consultaPlan.tfVigencia.setText(info[1]);
+  }
+  
+  public void mostrarCursos(){
+    String escuela = (String)this.consultaPlan.cbEscuelas.getSelectedItem();
+    DefaultTableModel modelo = new DefaultTableModel();
+    this.consultaPlan.tConsultaPlan.setModel(modelo);
+    
+    modelo.addColumn("Código del curso");
+    modelo.addColumn("Nombre del curso");
+    modelo.addColumn("Bloque");
+    modelo.addColumn("Horas de clase");
+    modelo.addColumn("Créditos");
+    
+    for (Object[] fila : planCrud.consultarCursosPlan(escuela)){
+      modelo.addRow(fila);
+    }
+  }
 
   @Override
-  public void actionPerformed(ActionEvent e) {throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public void actionPerformed(ActionEvent e){
+    if (e.getSource() == this.consultaPlan.btnConsultar){
+      mostrarInfoPlan();
+      mostrarCursos();
+    }
   }
   
 }

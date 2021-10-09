@@ -46,7 +46,7 @@ public class ConsultarPlan extends javax.swing.JFrame {
 
     jLabel1.setText("Consultar Plan de Estudio");
 
-    jLabel2.setText("Escuela propietaria:");
+    jLabel2.setText("Escuela:");
 
     btnConsultar.setText("Consultar");
 
@@ -63,7 +63,7 @@ public class ConsultarPlan extends javax.swing.JFrame {
           .addGroup(jPanel1Layout.createSequentialGroup()
             .addComponent(jLabel2)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(cbEscuelas, 0, 206, Short.MAX_VALUE)))
+            .addComponent(cbEscuelas, 0, 260, Short.MAX_VALUE)))
         .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(

@@ -6,7 +6,9 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -33,8 +35,6 @@ public class PlanDeEstudio {
         this.CodigoCurso = CodigoCurso;
     }
 
-       
- 
     
     /**
      * @return the iD

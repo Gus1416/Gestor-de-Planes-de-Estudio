@@ -8,10 +8,16 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,5 +54,81 @@ public class PlanDeEstudioCRUD extends Conexion {
     }
   }  
   
- 
+  public String[] consultarInfoPlan(String pEscuela){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    PlanDeEstudio plan = new PlanDeEstudio();
+    String[] infoPlan = new String[1];
+    
+    String sql = "SELECT id_plan_estudio, fecha_vigencia FROM plan_estudio WHERE escuela_propietaria = ?";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1,pEscuela);
+      rs = ps.executeQuery();
+      
+      while(rs.next()){
+        plan.setiD(rs.getInt("id_plan_estudio"));
+        //LocalDate fechaNueva = rs.getDate("fecha_vigencia").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        //plan.setFechaVigencia(fechaNueva);
+      }
+      
+      infoPlan[0] = Integer.toString(plan.getiD());
+      //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+      //String formattedString = plan.getFechaVigencia().format(formatter);
+      //infoPlan[1] = (formattedString);
+      
+      return infoPlan;
+      
+    } catch (SQLException ex) {
+      System.err.println(ex);
+      return infoPlan;
+      
+    }finally {
+      try {
+        con.close();
+      } catch (SQLException e){
+        System.err.println(e);
+      }
+    }
+  }
+  
+  public ArrayList<Object[]> consultarCursosPlan(String pEscuela){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Object[]> objFilas = new ArrayList<>();
+    
+    String sql = "CALL consultar_plan(?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pEscuela);
+      rs = ps.executeQuery();
+      ResultSetMetaData rsMd = rs.getMetaData();  
+      int cantidadColumnas = rsMd.getColumnCount();
+      
+      while (rs.next()){
+        Object[] filas = new Object[cantidadColumnas];
+        
+        for (int i = 0; i < cantidadColumnas; i++){
+          filas[i] = rs.getObject(i + 1);
+        }
+        objFilas.add(filas);
+      }
+      return objFilas;
+      
+    } catch (SQLException ex){
+      System.err.println(ex);
+      return objFilas;
+      
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e){
+        System.err.println(e);
+      }
+    }
+  }  
 }
