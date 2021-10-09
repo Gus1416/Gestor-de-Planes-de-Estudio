@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
     btnRegistrarEscuela = new javax.swing.JButton();
     btnRegistrarCurso = new javax.swing.JButton();
     btnRegistrarPlan = new javax.swing.JButton();
+    btnConsultarPlan = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,21 +42,26 @@ public class Menu extends javax.swing.JFrame {
 
     btnRegistrarPlan.setText("Registrar Plan");
 
+    btnConsultarPlan.setText("Consultar Plan");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addContainerGap(137, Short.MAX_VALUE)
-        .addComponent(jLabel1)
-        .addGap(127, 127, 127))
       .addGroup(layout.createSequentialGroup()
-        .addGap(30, 30, 30)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(btnRegistrarEscuela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(btnRegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(btnRegistrarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addGap(30, 30, 30)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addComponent(btnRegistrarEscuela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(btnRegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(btnRegistrarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(46, 46, 46)
+            .addComponent(btnConsultarPlan))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(109, 109, 109)
+            .addComponent(jLabel1)))
+        .addContainerGap(102, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,7 +69,9 @@ public class Menu extends javax.swing.JFrame {
         .addGap(22, 22, 22)
         .addComponent(jLabel1)
         .addGap(18, 18, 18)
-        .addComponent(btnRegistrarEscuela)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(btnRegistrarEscuela)
+          .addComponent(btnConsultarPlan))
         .addGap(18, 18, 18)
         .addComponent(btnRegistrarCurso)
         .addGap(18, 18, 18)
@@ -117,6 +125,7 @@ public class Menu extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  public javax.swing.JButton btnConsultarPlan;
   public javax.swing.JButton btnRegistrarCurso;
   public javax.swing.JButton btnRegistrarEscuela;
   public javax.swing.JButton btnRegistrarPlan;

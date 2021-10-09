@@ -38,7 +38,6 @@ public class CtrlPlanesEstudio implements ActionListener {
     this.regPlan.btnLimpiarCampos.addActionListener(this);
     this.consultarEscuelas= pEscuelaCRUD;
     this.consultarCursos= pCursoCRUD;       
-    
   }
   
   public void iniciar(){
@@ -56,15 +55,13 @@ public class CtrlPlanesEstudio implements ActionListener {
     return escuelas;
   }
   
-   public ArrayList cargarCodigos(){
+  public ArrayList cargarCodigos(){
     ArrayList<String> codigos = consultarCursos.consultar();
     for (String codigo : codigos){
       regPlan.cbCodigosCurso.addItem(codigo);
     }
     return codigos;
   }
-  
-  
   
   @Override
   public void actionPerformed(ActionEvent e){
@@ -87,7 +84,6 @@ public class CtrlPlanesEstudio implements ActionListener {
         JOptionPane.showMessageDialog(null, "Error al registrar el plan");
         limpiarPlan();
       }
-    
     }
     
     if (e.getSource() == regPlan.btnLimpiarCampos){
@@ -99,9 +95,6 @@ public class CtrlPlanesEstudio implements ActionListener {
    // regPlan.tfCodigoCursoPlan.setText(null);
    //   regPlan.tfPlanCode.setText(null);
   }
-
-
-
 }
     
     

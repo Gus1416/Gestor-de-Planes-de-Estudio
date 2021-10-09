@@ -7,8 +7,10 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -17,7 +19,6 @@ import java.util.Date;
  */
 public class PlanDeEstudioCRUD extends Conexion {
     
-   
   public boolean registrar(PlanDeEstudio plan){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -45,8 +46,7 @@ public class PlanDeEstudioCRUD extends Conexion {
         System.err.println(e);
       }
     }
-  }
-
-    
-     
+  }  
+  
+ 
 }

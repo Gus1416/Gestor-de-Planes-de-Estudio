@@ -12,6 +12,7 @@ import vista.Menu;
 import vista.RegistrarEscuela;
 import vista.RegistroCurso;
 import vista.registrarPlan;
+import vista.ConsultarPlan;
 
 /**
  *
@@ -25,6 +26,7 @@ public class CtrlMenu implements ActionListener {
     this.menu.btnRegistrarEscuela.addActionListener(this);
     this.menu.btnRegistrarCurso.addActionListener(this);
     this.menu.btnRegistrarPlan.addActionListener(this);
+    this.menu.btnConsultarPlan.addActionListener(this);
   }
   
   public void iniciar(){
@@ -65,6 +67,16 @@ public class CtrlMenu implements ActionListener {
       CtrlPlanesEstudio ctrlPlan= new CtrlPlanesEstudio(plan,planCrud,regPlan,consultarEscuelas,consultarCursos);
       ctrlPlan.iniciar();
       regPlan.setVisible(true);
+    }
+    
+    if (e.getSource() == menu.btnConsultarPlan){
+      PlanDeEstudioCRUD planCrud = new PlanDeEstudioCRUD();
+      EscuelaCRUD escuelaCrud = new EscuelaCRUD();
+      ConsultarPlan consultaPlan = new ConsultarPlan();
+      
+      CtrlConsultaPlanes ctrlConsultaPlanes = new CtrlConsultaPlanes(planCrud, escuelaCrud, consultaPlan);
+      ctrlConsultaPlanes.iniciar();
+      consultaPlan.setVisible(true);
     }
   }
   
