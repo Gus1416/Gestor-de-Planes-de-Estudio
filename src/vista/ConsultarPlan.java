@@ -40,6 +40,10 @@ public class ConsultarPlan extends javax.swing.JFrame {
     btnPDFCorreo = new javax.swing.JButton();
     jScrollPane1 = new javax.swing.JScrollPane();
     tConsultaPlan = new javax.swing.JTable();
+    jLabel5 = new javax.swing.JLabel();
+    tfTotalCursos = new javax.swing.JTextField();
+    jLabel6 = new javax.swing.JLabel();
+    tfTotalCreditos = new javax.swing.JTextField();
     btnRegresar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -137,6 +141,14 @@ public class ConsultarPlan extends javax.swing.JFrame {
     });
     jScrollPane1.setViewportView(tConsultaPlan);
 
+    jLabel5.setText("Cursos: ");
+
+    tfTotalCursos.setEditable(false);
+
+    jLabel6.setText("Créditos:");
+
+    tfTotalCreditos.setEditable(false);
+
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
     jPanel3.setLayout(jPanel3Layout);
     jPanel3Layout.setHorizontalGroup(
@@ -144,16 +156,28 @@ public class ConsultarPlan extends javax.swing.JFrame {
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
           .addGroup(jPanel3Layout.createSequentialGroup()
             .addComponent(btnPDFCorreo)
-            .addGap(0, 0, Short.MAX_VALUE))
-          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(tfTotalCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jLabel6)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(tfTotalCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addContainerGap())
     );
     jPanel3Layout.setVerticalGroup(
       jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel3Layout.createSequentialGroup()
-        .addComponent(btnPDFCorreo)
+        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(btnPDFCorreo)
+          .addComponent(jLabel5)
+          .addComponent(tfTotalCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jLabel6)
+          .addComponent(tfTotalCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap())
@@ -250,12 +274,16 @@ public class ConsultarPlan extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
+  private javax.swing.JLabel jLabel5;
+  private javax.swing.JLabel jLabel6;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JScrollPane jScrollPane1;
   public javax.swing.JTable tConsultaPlan;
   public javax.swing.JTextField tfCodigoPlan;
+  public javax.swing.JTextField tfTotalCreditos;
+  public javax.swing.JTextField tfTotalCursos;
   public javax.swing.JTextField tfVigencia;
   // End of variables declaration//GEN-END:variables
 }
