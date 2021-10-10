@@ -9,6 +9,7 @@ import modelo.CursoCRUD;
 import modelo.EscuelaCRUD;
 import vista.RegistroCurso;
 
+
 /**
  *
  * @author María Laura
@@ -18,19 +19,23 @@ public class CtrlCurso implements ActionListener {
   private CursoCRUD cursoCrud;
   private RegistroCurso regCurso;
   private EscuelaCRUD consultarEscuelas;
+  
  
-  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso, EscuelaCRUD pEscuelaCrud){
+  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso,EscuelaCRUD pEscuelaCrud){
     this.curso = pCurso;
     this.cursoCrud = pCursoCrud;
     this.regCurso = pRegCurso;
     this.consultarEscuelas = pEscuelaCrud;
     this.regCurso.RegistrarBt.addActionListener(this);
+    this.regCurso.LimpiarBt.addActionListener(this);
+    this.regCurso.btnVolver.addActionListener(this);
+    
   }
   
   public void iniciar(){
-    cargarEscuelas();
+    cargarEscuelas();  // 
     regCurso.setTitle("Gestor de Planes de Estudio");
-    regCurso.setLocationRelativeTo(null);
+    regCurso.setLocationRelativeTo(null);    
   }
   
   public void cargarEscuelas(){
@@ -59,6 +64,9 @@ public class CtrlCurso implements ActionListener {
     }
     if (e.getSource() == regCurso.LimpiarBt){
       limpiar();
+    }
+    if (e.getSource() == regCurso.btnVolver){
+      regCurso.setVisible(false);
     }
   }
   

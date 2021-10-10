@@ -27,6 +27,23 @@ public class EscuelaCRUD extends Conexion {
         return ESCUELAOBJ;
     }
   
+
+  
+   public String obtenerEscuelaID(ArrayList<Escuela> ESCUELA, String NombreEscuela){
+       String ID= null;
+       
+       for(int i=0 ; i< ESCUELA.size(); i++){
+            if(NombreEscuela.equals(ESCUELA.get(i).getNombre()) == true){
+                ID=ESCUELA.get(i).getCodigo();
+                System.out.println("Encontré el código mae, sería este: " + ID);
+            }   
+            else{
+                System.out.println("No se encontró el codigo de la escuela ");
+            }
+        }
+       return ID;
+   } 
+    
   public boolean registrar(Escuela escuela){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -58,6 +75,7 @@ public class EscuelaCRUD extends Conexion {
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
+    
     Escuela escuela = new Escuela();
     ArrayList<String> escuelas = new ArrayList<>();
   
@@ -96,5 +114,6 @@ public class EscuelaCRUD extends Conexion {
       }
     }
   }
+  
   
 }

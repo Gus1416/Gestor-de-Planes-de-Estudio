@@ -16,8 +16,6 @@ import java.time.format.DateTimeFormatter;
 import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -29,15 +27,13 @@ public class PlanDeEstudioCRUD extends Conexion {
     PreparedStatement ps = null;
     Connection con = getConexion();
     
-    String sql = "CALL registrar_plan(?,?,?,?,?)";
+    String sql = "CALL registrar_plan(?,?,?)";
     
     try{
       ps = con.prepareStatement(sql);
       ps.setInt(1, plan.getiD());
       ps.setString(2, plan.getEscuelaPropietaria().getNombre());
       ps.setDate(3,java.sql.Date.valueOf(plan.getFechaVigencia()));
-      ps.setString(4,plan.getBloques());
-      ps.setString(5,plan.getCodigoCurso());
       ps.execute();
       return true;
       
@@ -93,7 +89,7 @@ public class PlanDeEstudioCRUD extends Conexion {
       }
     }
   }
-  
+
   public ArrayList<Object[]> consultarCursosPlan(String pEscuela){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -122,13 +118,34 @@ public class PlanDeEstudioCRUD extends Conexion {
     } catch (SQLException ex){
       System.err.println(ex);
       return objFilas;
-      
+
+    }
+  }
+  
+  public boolean asignarcurso(PlanDeEstudio plan){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+
+    String sql = "CALL asignar_curso_plan(?,?,?)";
+
+    try{
+
+      ps = con.prepareStatement(sql);
+      ps.setString(1,Integer.toString(plan.getiD()));
+      ps.setString(2, plan.getCodigoCurso());
+      ps.setString(3, plan.getBloques());
+      ps.execute();
+      return true;
+
+    } catch (SQLException e){
+      System.err.println(e);
+      return false;  
     } finally {
       try {
         con.close();
       } catch (SQLException e){
         System.err.println(e);
       }
-    }
-  }  
+    }  
+  }
 }

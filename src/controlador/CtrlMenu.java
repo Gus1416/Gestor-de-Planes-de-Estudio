@@ -13,6 +13,7 @@ import vista.RegistrarEscuela;
 import vista.RegistroCurso;
 import vista.registrarPlan;
 import vista.ConsultarPlan;
+import vista.registrarRequisitos;
 
 /**
  *
@@ -25,8 +26,9 @@ public class CtrlMenu implements ActionListener {
     this.menu = pMenu;
     this.menu.btnRegistrarEscuela.addActionListener(this);
     this.menu.btnRegistrarCurso.addActionListener(this);
-    this.menu.btnRegistrarPlan.addActionListener(this);
+    this.menu.btnRegistrarPlan1.addActionListener(this);
     this.menu.btnConsultarPlan.addActionListener(this);
+    this.menu.btnRegistrarRequisitos.addActionListener(this);
   }
   
   public void iniciar(){
@@ -52,12 +54,12 @@ public class CtrlMenu implements ActionListener {
       EscuelaCRUD escuelaCrud = new EscuelaCRUD();
       RegistroCurso regCurso = new RegistroCurso();
       
-      CtrlCurso ctrlCurso = new CtrlCurso(curso, cursoCrud, regCurso, escuelaCrud);
+      CtrlCurso ctrlCurso = new CtrlCurso(curso, cursoCrud, regCurso,escuelaCrud);
       ctrlCurso.iniciar();
       regCurso.setVisible(true);
     }
     
-    if (e.getSource() == menu.btnRegistrarPlan){
+    if (e.getSource() == menu.btnRegistrarPlan1){
       PlanDeEstudio plan = new PlanDeEstudio();
       PlanDeEstudioCRUD planCrud= new PlanDeEstudioCRUD();
       registrarPlan regPlan = new registrarPlan();
@@ -78,6 +80,17 @@ public class CtrlMenu implements ActionListener {
       ctrlConsultaPlanes.iniciar();
       consultaPlan.setVisible(true);
     }
-  }
   
+    if (e.getSource() == menu.btnRegistrarRequisitos){
+      Curso curso = new Curso();
+      CursoCRUD cursoCrud = new CursoCRUD();
+      EscuelaCRUD escuelaCrud = new EscuelaCRUD();
+      RegistroCurso regCurso = new RegistroCurso();
+      registrarRequisitos regRequisitos = new registrarRequisitos();
+      
+      CtrlRequisitos ctrlRequisitos = new CtrlRequisitos(curso, cursoCrud, regRequisitos,escuelaCrud);
+      ctrlRequisitos.iniciar();
+      regRequisitos.setVisible(true);
+    }
+  }
 }

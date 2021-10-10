@@ -34,6 +34,7 @@ public class RegistroCurso extends javax.swing.JFrame {
     HorasCb = new javax.swing.JComboBox<>();
     RegistrarBt = new javax.swing.JButton();
     LimpiarBt = new javax.swing.JButton();
+    btnVolver = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +96,8 @@ public class RegistroCurso extends javax.swing.JFrame {
       }
     });
 
+    btnVolver.setText("Volver");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -104,12 +107,17 @@ public class RegistroCurso extends javax.swing.JFrame {
           .addGroup(layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jLabel2)
-              .addComponent(jLabel3)
-              .addComponent(jLabel4)
-              .addComponent(jLabel5)
-              .addComponent(jLabel6))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+              .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(jLabel2)
+                  .addComponent(jLabel3)
+                  .addComponent(jLabel4)
+                  .addComponent(jLabel5)
+                  .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(RegistrarBt)
+                .addGap(3, 3, 3)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addComponent(HorasCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,13 +126,13 @@ public class RegistroCurso extends javax.swing.JFrame {
                 .addComponent(txtNombre))
               .addComponent(CreditosCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addGroup(layout.createSequentialGroup()
-                .addComponent(RegistrarBt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LimpiarBt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(LimpiarBt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
           .addGroup(layout.createSequentialGroup()
             .addGap(115, 115, 115)
             .addComponent(jLabel1)))
-        .addContainerGap(39, Short.MAX_VALUE))
+        .addContainerGap(50, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +162,8 @@ public class RegistroCurso extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(RegistrarBt)
-          .addComponent(LimpiarBt))
+          .addComponent(LimpiarBt)
+          .addComponent(btnVolver))
         .addContainerGap())
     );
 
@@ -226,6 +235,7 @@ public class RegistroCurso extends javax.swing.JFrame {
   public javax.swing.JComboBox<String> HorasCb;
   public javax.swing.JButton LimpiarBt;
   public javax.swing.JButton RegistrarBt;
+  public javax.swing.JButton btnVolver;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
