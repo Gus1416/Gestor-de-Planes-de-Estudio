@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Correo;
 import modelo.EscuelaCRUD;
 import modelo.PlanDeEstudioCRUD;
 import modelo.PlantillaPDF;
@@ -94,6 +95,13 @@ public class CtrlConsultaPlanes implements ActionListener {
 
         if (pdf.crearPlantilla()){
           System.out.println("Plantilla creada");
+          Correo correo = new Correo();
+          if (correo.EnvioMail(email, this.consultaPlan.tfCodigoPlan.getText(), 
+                  (String)this.consultaPlan.cbEscuelas.getSelectedItem())){
+            JOptionPane.showMessageDialog(null, "Correo enviado a " + email);
+          } else {
+            JOptionPane.showMessageDialog(null, "No se pudo enviar el correo");
+          }
         } else {
           JOptionPane.showMessageDialog(null, "No se pudo crear el PDF");
         }  
