@@ -64,9 +64,6 @@ public class PlanDeEstudio {
         this.fechaVigencia = fechaVigencia;
     }
 
-    
-
-    
     public Escuela getEscuelaPropietaria() {
         return EscuelaPropietaria;
     }
@@ -99,14 +96,7 @@ public class PlanDeEstudio {
             }
         }
     }
-    
-    
-    
-  
-    
-
    
-
     /**
      * @param EscuelaPropietaria the EscuelaPropietaria to set
      */
