@@ -16,7 +16,7 @@ public class CtrlEscuela implements ActionListener {
   private Escuela escuela;
   private EscuelaCRUD escuelaCrud;
   private RegistrarEscuela regEscuela;
-  public static ArrayList<Escuela> escuelas;
+  public static ArrayList<Escuela> escuelas = new ArrayList<>();
   
   public CtrlEscuela() {
   }

@@ -27,6 +27,8 @@ public class CtrlCurso implements ActionListener {
     this.regCurso = pRegCurso;
     this.consultarEscuelas = pEscuelaCrud;
     this.regCurso.RegistrarBt.addActionListener(this);
+    this.regCurso.LimpiarBt.addActionListener(this);
+    this.regCurso.btnVolver.addActionListener(this);
     
   }
   
@@ -62,6 +64,9 @@ public class CtrlCurso implements ActionListener {
     }
     if (e.getSource() == regCurso.LimpiarBt){
       limpiar();
+    }
+    if (e.getSource() == regCurso.btnVolver){
+      regCurso.setVisible(false);
     }
   }
   

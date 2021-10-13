@@ -27,6 +27,7 @@ public class EscuelaCRUD extends Conexion {
         return ESCUELAOBJ;
     }
   
+
   
    public String obtenerEscuelaID(ArrayList<Escuela> ESCUELA, String NombreEscuela){
        String ID= null;
@@ -40,12 +41,8 @@ public class EscuelaCRUD extends Conexion {
                 System.out.println("No se encontró el codigo de la escuela ");
             }
         }
-       
        return ID;
    } 
-    
-  
-  
     
   public boolean registrar(Escuela escuela){
     PreparedStatement ps = null;
@@ -81,9 +78,7 @@ public class EscuelaCRUD extends Conexion {
     
     Escuela escuela = new Escuela();
     ArrayList<String> escuelas = new ArrayList<>();
-   
-    
-    
+  
     int x = 0;
     
     String sql = "SELECT * FROM escuela";
@@ -99,14 +94,12 @@ public class EscuelaCRUD extends Conexion {
         escuela.setCodigo(rs.getString("id_escuela"));
         escuela.setNombre(rs.getString("nombre_escuela"));
         escuelas.add(escuela.getNombre());
-        
+
         ESCUELAOBJ.add(contenedor);
         System.out.println("Estos son las escuelas del array:" +  ESCUELAOBJ.get(x).getNombre());
           
         x++;  
-        
       }
-     
       return escuelas;
       
     } catch (SQLException e){

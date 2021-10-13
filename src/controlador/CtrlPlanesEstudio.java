@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -43,7 +38,6 @@ public class CtrlPlanesEstudio implements ActionListener {
     this.regPlan.btnVolver.addActionListener(this);
     this.consultarEscuelas= pEscuelaCRUD;
     this.consultarCursos= pCursoCRUD;       
-    
   }
   
   public void iniciar(){
@@ -61,7 +55,7 @@ public class CtrlPlanesEstudio implements ActionListener {
     return escuelas;
   }
   
-   public ArrayList cargarCodigos(){
+  public ArrayList cargarCodigos(){
     ArrayList<String> codigos = consultarCursos.consultar();
     for (String codigo : codigos){
       regPlan.cbCodigosCurso.addItem(codigo);
@@ -69,86 +63,68 @@ public class CtrlPlanesEstudio implements ActionListener {
     return codigos;
   }
   
-  
-  
   @Override
   public void actionPerformed(ActionEvent e){
+    if (e.getSource() == regPlan.btnRegistrarPlan){
+
+      plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
+      plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.ESCUELAOBJ);
+      //plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());
+      Date input = regPlan.DateChooser.getCalendar().getTime();  // Obtener la fecha directa desde JDateChooser
+      plan.setFechaVigencia(input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+      //plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
+
+      if (planCrud.registrar(plan)){
+        JOptionPane.showMessageDialog(null, "Plan Registrado");
+        limpiarPlan();
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al registrar el plan");
+        limpiarPlan();
+      }
+    }
+    
+    if (e.getSource() == regPlan.btnAsignarCurso){       
+      for(int i=0 ; i< planes.size(); i++){        
+        if(regPlan.tfPlanCode.equals(planes.get(i).getiD()) == true){           
+          plan= planes.get(i);  // Validar que el plan se encuentra registrado;        
+        }    
+      }
       
+      plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());  
+      plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
       
-        if (e.getSource() == regPlan.btnRegistrarPlan){
-
-
-          plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
-          plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.ESCUELAOBJ);
-        //  plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());
-          Date input = regPlan.DateChooser.getCalendar().getTime();  // Obtener la fecha directa desde JDateChooser
-          plan.setFechaVigencia(input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        //  plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
-
-          planes.add(plan);
-        
-          if (planCrud.registrar(plan)){
-            JOptionPane.showMessageDialog(null, "Plan Registrado");
-            limpiarPlan();
-          } else {
-            JOptionPane.showMessageDialog(null, "Error al registrar el plan");
-            limpiarPlan();
-          }
-
-        }
+      if (planCrud.asignarcurso(plan)){
+        JOptionPane.showMessageDialog(null, "Plan Registrado"); 
+        limpiarPlan();
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al registrar el plan");
+        limpiarPlan();
+      } 
+    }
     
-        if (e.getSource() == regPlan.btnAsignarCurso){
-            
-             for(int i=0 ; i< planes.size(); i++){
-                 if(regPlan.tfPlanCode.equals(planes.get(i).getiD()) == true){
-                     plan= planes.get(i);  // Validar que el plan se encuentra registrado;
-                 }
-             }
-            
-            plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());
-            plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
-            
-
-            if (planCrud.asignarcurso(plan)){
-            JOptionPane.showMessageDialog(null, "Plan Registrado");
-            limpiarPlan();
-          } else {
-            JOptionPane.showMessageDialog(null, "Error al registrar el plan");
-            limpiarPlan();
-          }
-
-
-        }
+    if (e.getSource() == regPlan.btnLoad){   
+      regPlan.cbCodigosCurso.removeAllItems();
+      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.ESCUELAOBJ,regPlan.cbEscuelaPlan.getSelectedItem().toString());      
+      System.out.println("Mae este es el codigo que mellega de su metodo:" + codigo);
+      ArrayList<String> codigos = consultarCursos.consultarCodigos(codigo);    
+      for (String code : codigos){       
+        regPlan.cbCodigosCurso.addItem(code);         
+      } 
+    }
     
-
-        if(e.getSource() == regPlan.btnLoad){
-                  regPlan.cbCodigosCurso.removeAllItems();
-                  String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.ESCUELAOBJ,regPlan.cbEscuelaPlan.getSelectedItem().toString());
-                  System.out.println("Mae este es el codigo que mellega de su metodo:" + codigo);
-                  ArrayList<String> codigos = consultarCursos.consultarCodigos(codigo);
-                  for (String code : codigos){
-                    regPlan.cbCodigosCurso.addItem(code);      
-                  }
-
-        }
-
-            if (e.getSource() == regPlan.btnLimpiarCampos){
-              limpiarPlan();  
-            }
-
-            if (e.getSource() == regPlan.btnVolver){
-                        regPlan.setVisible(false);
-                }
+    if (e.getSource() == regPlan.btnLimpiarCampos){
+      limpiarPlan();  
+    }
     
+    if (e.getSource() == regPlan.btnVolver){         
+      regPlan.setVisible(false);      
+    }   
   }
   
   public void limpiarPlan(){
    // regPlan.tfCodigoCursoPlan.setText(null);
    //   regPlan.tfPlanCode.setText(null);
   }
-
-
-
 }
     
     
