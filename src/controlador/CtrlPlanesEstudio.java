@@ -6,12 +6,9 @@ import javax.swing.JOptionPane;
 import modelo.PlanDeEstudio;
 import modelo.PlanDeEstudioCRUD;
 import vista.registrarPlan;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import modelo.EscuelaCRUD;
 import modelo.CursoCRUD;
-import modelo.Escuela;
 
 /**
  *
@@ -42,7 +39,6 @@ public class CtrlPlanesEstudio implements ActionListener {
   
   public void iniciar(){
     cargarEscuelas();
-    //cargarCodigos();
     regPlan.setTitle("Gestor de Planes de Estudio");  
     regPlan.setLocationRelativeTo(null);
   }
@@ -66,15 +62,11 @@ public class CtrlPlanesEstudio implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == regPlan.btnRegistrarPlan){
-
       plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
       plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.ESCUELAOBJ);
-      //plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());
-      Date input = regPlan.DateChooser.getCalendar().getTime();  // Obtener la fecha directa desde JDateChooser
-      plan.setFechaVigencia(input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-      //plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
-
-      if (planCrud.registrar(plan)){
+      plan.setFechaVigencia(regPlan.DateChooser.getCalendar().getTime());
+      
+      if (planCrud.registrar(plan)){ 
         JOptionPane.showMessageDialog(null, "Plan Registrado");
         limpiarPlan();
       } else {
@@ -94,7 +86,7 @@ public class CtrlPlanesEstudio implements ActionListener {
       plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
       
       if (planCrud.asignarcurso(plan)){
-        JOptionPane.showMessageDialog(null, "Plan Registrado"); 
+        JOptionPane.showMessageDialog(null, "Curso Asignado"); 
         limpiarPlan();
       } else {
         JOptionPane.showMessageDialog(null, "Error al registrar el plan");

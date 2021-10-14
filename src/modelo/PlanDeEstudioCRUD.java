@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.sql.Connection;
@@ -10,12 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import static java.time.temporal.TemporalQueries.localDate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -33,7 +24,7 @@ public class PlanDeEstudioCRUD extends Conexion {
       ps = con.prepareStatement(sql);
       ps.setInt(1, plan.getiD());
       ps.setString(2, plan.getEscuelaPropietaria().getNombre());
-      ps.setDate(3,java.sql.Date.valueOf(plan.getFechaVigencia()));
+      ps.setDate(3, new java.sql.Date(plan.getFechaVigencia().getTime()));
       ps.execute();
       return true;
       
@@ -55,7 +46,7 @@ public class PlanDeEstudioCRUD extends Conexion {
     ResultSet rs = null;
     Connection con = getConexion();
     PlanDeEstudio plan = new PlanDeEstudio();
-    String[] infoPlan = new String[1];
+    String[] infoPlan = new String[2];
     
     String sql = "SELECT id_plan_estudio, fecha_vigencia FROM plan_estudio WHERE escuela_propietaria = ?";
     
@@ -66,14 +57,12 @@ public class PlanDeEstudioCRUD extends Conexion {
       
       while(rs.next()){
         plan.setiD(rs.getInt("id_plan_estudio"));
-        //LocalDate fechaNueva = rs.getDate("fecha_vigencia").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        //plan.setFechaVigencia(fechaNueva);
+        plan.setFechaVigencia(rs.getDate("fecha_vigencia"));
       }
       
       infoPlan[0] = Integer.toString(plan.getiD());
-      //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
-      //String formattedString = plan.getFechaVigencia().format(formatter);
-      //infoPlan[1] = (formattedString);
+      SimpleDateFormat fecha = new SimpleDateFormat("yyyy/MM/dd");
+      infoPlan[1] = fecha.format(plan.getFechaVigencia());
       
       return infoPlan;
       
@@ -129,7 +118,6 @@ public class PlanDeEstudioCRUD extends Conexion {
     String sql = "CALL asignar_curso_plan(?,?,?)";
 
     try{
-
       ps = con.prepareStatement(sql);
       ps.setString(1,Integer.toString(plan.getiD()));
       ps.setString(2, plan.getCodigoCurso());

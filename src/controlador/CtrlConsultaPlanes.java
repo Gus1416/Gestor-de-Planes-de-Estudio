@@ -51,7 +51,7 @@ public class CtrlConsultaPlanes implements ActionListener {
     String escuela = (String)this.consultaPlan.cbEscuelas.getSelectedItem();
     String[] info = planCrud.consultarInfoPlan(escuela);
     this.consultaPlan.tfCodigoPlan.setText(info[0]);
-    //this.consultaPlan.tfVigencia.setText(info[1]);
+    this.consultaPlan.tfVigencia.setText(info[1]);
   }
   
   public void mostrarCursos(){
