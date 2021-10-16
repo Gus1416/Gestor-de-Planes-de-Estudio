@@ -4,18 +4,17 @@ import controlador.CtrlMenu;
 import vista.Menu;
 
 /**
- * Main class
+ * Clase principal que ejecuta el programa.
  * 
- * @author Gustavo
- * @version 1.0 26/09/2021 
+ * @author Gustavo, Sebastián, María Laura
+ * @version 26/09/2021 
  */
 public class GestorPlanesEstudio {
-
   
   /**
-   * Main method
+   * Método main que inicializa el menú principal
    * 
-   * @param args the command line arguments
+   * @param args argumentos de línea de comandos
    */
   public static void main(String[] args) {
     Menu menu = new Menu();

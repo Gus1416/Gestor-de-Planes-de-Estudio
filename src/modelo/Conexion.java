@@ -3,14 +3,15 @@ package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
+ * Clase que permite la conexión con la base de datos MySQL.
+ * 
  * @author Gustavo
+ * @version 07/10/2021
  */
 public class Conexion {
+  //Atributos de clase
   private final String base = "db_gestor_planes_estudio";
   private final String password = "12345";
   private final String user = "root";
@@ -18,22 +19,18 @@ public class Conexion {
   private  Connection con = null;
   
     /**
-     *
-     * @return
+     * Genera la conexión con la base de datos.
+     * 
+     * @return la conexión con la base de datos
      */
     public Connection getConexion(){
     try{
       Class.forName("com.mysql.cj.jdbc.Driver");
       con = DriverManager.getConnection(this.url, this.user, this.password);
       
-    }catch(SQLException e){
+    }catch(SQLException | ClassNotFoundException e){
       System.err.println(e);
-    } catch (ClassNotFoundException ex){
-      Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
     }
     return con;
-  }
-  
-  
-      
+  }    
 }

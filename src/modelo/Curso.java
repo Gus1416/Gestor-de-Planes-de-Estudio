@@ -1,172 +1,133 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.ArrayList;
 
 /**
+ * Clase que contiene la información de los cursos.
  *
  * @author Maria Laura
+ * @version 07/10/2021
  */
 public class Curso {
+//Atributos de clase
+  private String idCurso;
+  private String nombreCurso;
+  private String creditos;
+  private String horasLectivas;
+  private String escuela;
+  private String auxCorrequisitos;
+  private String auxRrequisitos;
+  private ArrayList<Curso> correquisitos = new ArrayList<>();
+  private ArrayList<Curso> requisitos = new ArrayList<>();
+
+  /**
+   * Constructor por defecto
+   */
+  public Curso(){
     
-private String idCurso; 
-private String nombreCurso;
-private String creditos;
-private String horasLectivas;
-private String escuela;
+  }
 
-private String auxCorrequisitos;
-private String auxRrequisitos;
+  /**
+   * Constructor con parámetros.
+   * 
+   * @param pIdCurso           identificador del curso
+   * @param pNombreCurso       nombre del curso
+   * @param pCreditos          cantidad de créditos del curso
+   * @param pHorasLectivas     cantidad de horas lectivas del curso
+   * @param pEscuela           nombre de la escuela propietaria del curso
+   * @param pAuxCorrequisitos  nombre del curso correquisito del curso
+   * @param pAuxRrequisitos    nombre del curso requisito del curso
+   * @param pCorrequisitos     lista de correquisitos del curso
+   * @param pRequisitos        lista de requisitos del curso
+   */
+  public Curso(String pIdCurso, String pNombreCurso, String pCreditos, String pHorasLectivas, 
+          String pEscuela, String pAuxCorrequisitos, String pAuxRrequisitos, ArrayList<Curso> pCorrequisitos, 
+          ArrayList<Curso> pRequisitos) {
+    this.idCurso = pIdCurso;
+    this.nombreCurso = pNombreCurso;
+    this.creditos = pCreditos;
+    this.horasLectivas = pHorasLectivas;
+    this.escuela = pEscuela;
+    this.auxCorrequisitos = pAuxCorrequisitos;
+    this.auxRrequisitos = pAuxRrequisitos;
+    this.correquisitos = pCorrequisitos;
+    this.requisitos = pRequisitos;
+  }
 
-private ArrayList<Curso> correquisitos = new ArrayList<>();
-private ArrayList<Curso> requisitos = new ArrayList<>();
+  //Métodos accesores
+  public String getEscuela() {
+    return escuela;
+  }
 
+  public void setEscuela(String pEscuela) {
+    this.escuela = pEscuela;
+  }
 
-public Curso(){
-}
+  public String getIdCurso() {
+    return idCurso;
+  }
 
+  public void setIdCurso(String pIdCurso) {
+    this.idCurso = pIdCurso;
+  }
 
+  public String getNombreCurso() {
+    return nombreCurso;
+  }
 
-    public Curso(String idCurso, String nombreCurso, String creditos, String horasLectivas, String escuela, String auxCorrequisitos, String auxRrequisitos, ArrayList<Curso> correquisitos, ArrayList<Curso> requisitos) {
-        this.idCurso = idCurso;
-        this.nombreCurso = nombreCurso;
-        this.creditos = creditos;
-        this.horasLectivas = horasLectivas;
-        this.escuela = escuela;
-        this.auxCorrequisitos = auxCorrequisitos;
-        this.auxRrequisitos = auxRrequisitos;
-        this.correquisitos = correquisitos;
-        this.requisitos = requisitos;
-    }
+  public void setNombreCurso(String pNombreCurso) {
+    this.nombreCurso = pNombreCurso;
+  }
 
-    
+  public String getCreditos() {
+    return creditos;
+  }
 
+  public void setCreditos(String pCreditos) {
+    this.creditos = pCreditos;
+  }
 
+  public String getHorasLectivas() {
+    return horasLectivas;
+  }
 
-/**
-public Curso (String pIdCurso, String pNombre, int pCreditos, int pHorasLectivas){
-    this.idCurso=pIdCurso;
-    this.nombreCurso=pNombre;
-    this.creditos=pCreditos;
-    this.horasLectivas=pHorasLectivas;
+  public void setHorasLectivas(String pHorasLectivas) {
+    this.horasLectivas = pHorasLectivas;
+  }
 
+  public ArrayList<Curso> getCorrequisitos() {
+    return correquisitos;
+  }
 
- 
- *  
-* 
-* 
-* 
-* 
-    /**
-     * @return the idCurso
-     */
+  public void setCorrequisitos(ArrayList<Curso> pCorrequisitos) {
+    this.correquisitos = pCorrequisitos;
+  }
 
-    public String getEscuela(){
-        return escuela;
-    }
-    public void setEscuela(String pEscuela){
-        this.escuela=pEscuela;
-    }
-    
-    public String getIdCurso() {
-        return idCurso;
-    }
+  public ArrayList<Curso> getRequisitos() {
+    return requisitos;
+  }
 
-    /**
-     * @param idCurso the idCurso to set
-     */
-    public void setIdCurso(String idCurso) {
-        this.idCurso = idCurso;
-    }
+  public void setRequisitos(ArrayList<Curso> pRequisitos) {
+    this.requisitos = pRequisitos;
+  }
 
-    /**
-     * @return the nombreCurso
-     */
-    public String getNombreCurso() {
-        return nombreCurso;
-    }
+  public Curso(String pIdCurso) {
+    this.idCurso = pIdCurso;
+  }
 
-    /**
-     * @param nombreCurso the nombreCurso to set
-     */
-    public void setNombreCurso(String nombreCurso) {
-        this.nombreCurso = nombreCurso;
-    }
+  public String getAuxCorrequisitos() {
+    return auxCorrequisitos;
+  }
 
-    /**
-     * @return the creditos
-     */
-    public String getCreditos() {
-        return creditos;
-    }
+  public void setAuxCorrequisitos(String pAuxCorrequisitos) {
+    this.auxCorrequisitos = pAuxCorrequisitos;
+  }
 
-    /**
-     * @param creditos the creditos to set
-     */
-    public void setCreditos(String creditos) {
-        this.creditos = creditos;
-    }
+  public String getAuxRrequisitos() {
+    return auxRrequisitos;
+  }
 
-    /**
-     * @return the horasLectivas
-     */
-    public String getHorasLectivas() {
-        return horasLectivas;
-    }
-
-    /**
-     * @param horasLectivas the horasLectivas to set
-     */
-    public void setHorasLectivas(String horasLectivas) {
-        this.horasLectivas = horasLectivas;
-    }
-
-    public ArrayList<Curso> getCorrequisitos() {
-        return correquisitos;
-    }
-
-    public void setCorrequisitos(ArrayList<Curso> correquisitos) {
-        this.correquisitos = correquisitos;
-    }
-
-    public ArrayList<Curso> getRequisitos() {
-        return requisitos;
-    }
-
-    public void setRequisitos(ArrayList<Curso> requisitos) {
-        this.requisitos = requisitos;
-    }
-
-   
-
-    public Curso(String idCurso) {
-        this.idCurso = idCurso;
-    }
-
-    public String getAuxCorrequisitos() {
-        return auxCorrequisitos;
-    }
-
-    public void setAuxCorrequisitos(String auxCorrequisitos) {
-        this.auxCorrequisitos = auxCorrequisitos;
-    }
-
-    public String getAuxRrequisitos() {
-        return auxRrequisitos;
-    }
-
-    public void setAuxRrequisitos(String auxRrequisitos) {
-        this.auxRrequisitos = auxRrequisitos;
-    }
-    
-    
-    
-    
-    
-    
-    
+  public void setAuxRrequisitos(String pAuxRrequisitos) {
+    this.auxRrequisitos = pAuxRrequisitos;
+  }
 }

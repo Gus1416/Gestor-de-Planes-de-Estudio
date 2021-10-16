@@ -1,34 +1,34 @@
 package modelo;
 
-import java.util.ArrayList;
-
 /**
- * Abstracción de clase escuela
+ * Clase con la información de las escuelas.
  * 
  * @author Gustavo
- * @version 1.0 26/09/2021
+ * @version 05/10/2021
  */
 public class Escuela {
-
+  //Atributos de clase
   private String nombre;
   private String codigo;
-  //private ArrayList<PlanesEstudio> planesEstudio;
     
+  /**
+   * Constructor por defecto.
+   */
   public Escuela(){
-    
   }
 
-    public Escuela(String nombre, String codigo) {
-        this.nombre = nombre;
-        this.codigo = codigo;
-    }
-
-  
-  
-  
   /**
-   * Métodos accesores
+   * Constructor con parámetros.
+   * 
+   * @param pNombre el nombre de la escuela
+   * @param pCodigo el código de la escuela
    */
+  public Escuela(String pNombre, String pCodigo) {
+    this.nombre = pNombre;
+    this.codigo = pCodigo;
+  }
+  
+  //Métodos accesores
   public String getNombre() {
     return nombre;
   }

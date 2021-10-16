@@ -10,41 +10,45 @@ import java.util.ArrayList;
  * Clase para las operaciones CRUD de la escuela en la base de datos
  * 
  * @author Gustavo
- * @version 30/09/2021
+ * @version 09/10/2021
  */
 public class EscuelaCRUD extends Conexion {
-  
+  //Atributo de clase
+  public static ArrayList<Escuela> escuelaObj = new ArrayList<Escuela>();  
+
+  //Método accesor
+  public ArrayList<Escuela> getEscuelaObj() {
+    return escuelaObj;
+  }
+
   /**
-   * Método para registrar la escuela
-   * @param escuela objeto de tipo Escuela
-   * @return true si se realiza la operación, false en caso contrario
+   * Obtiene el id de una escuela específica.
    * 
+   * @param pEscuela        lista de escuelas
+   * @param pNombreEscuela  nombre de la escuela a buscar
+   * @return id del curso consultado
    */
-    
-  public static ArrayList<Escuela> ESCUELAOBJ = new ArrayList<Escuela>();  
+  public String obtenerEscuelaID(ArrayList<Escuela> pEscuela, String pNombreEscuela) {
+    String id = null;
 
-    public ArrayList<Escuela> getESCUELAOBJ() {
-        return ESCUELAOBJ;
+    for (int i = 0; i < pEscuela.size(); i++){
+      if (pNombreEscuela.equals(pEscuela.get(i).getNombre()) == true){
+        id = pEscuela.get(i).getCodigo();
+        System.out.println("Encontré el código mae, sería este: " + id);
+      } else{
+        System.out.println("No se encontró el codigo de la escuela ");
+      }
     }
-  
+    return id;
+  }
 
-  
-   public String obtenerEscuelaID(ArrayList<Escuela> ESCUELA, String NombreEscuela){
-       String ID= null;
-       
-       for(int i=0 ; i< ESCUELA.size(); i++){
-            if(NombreEscuela.equals(ESCUELA.get(i).getNombre()) == true){
-                ID=ESCUELA.get(i).getCodigo();
-                System.out.println("Encontré el código mae, sería este: " + ID);
-            }   
-            else{
-                System.out.println("No se encontró el codigo de la escuela ");
-            }
-        }
-       return ID;
-   } 
-    
-  public boolean registrar(Escuela escuela){
+  /**
+   * Registra una escuela en la base de datos.
+   * 
+   * @param pEscuela el objeto Escuela a registrar
+   * @return Un booleano que indica si la operación concluyó exitosamente.
+   */
+  public boolean registrar(Escuela pEscuela){
     PreparedStatement ps = null;
     Connection con = getConexion();
     
@@ -52,8 +56,8 @@ public class EscuelaCRUD extends Conexion {
     
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, escuela.getCodigo());
-      ps.setString(2, escuela.getNombre());
+      ps.setString(1, pEscuela.getCodigo());
+      ps.setString(2, pEscuela.getNombre());
       ps.execute();
       return true;
       
@@ -70,15 +74,17 @@ public class EscuelaCRUD extends Conexion {
     }
   }
  
+  /**
+   * Consulta la información de las escuelas.
+   * 
+   * @return una lista con la información de todas las escuelas 
+   */
   public ArrayList<String> consultar(){
-    
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
-    
     Escuela escuela = new Escuela();
     ArrayList<String> escuelas = new ArrayList<>();
-  
     int x = 0;
     
     String sql = "SELECT * FROM escuela";
@@ -88,16 +94,11 @@ public class EscuelaCRUD extends Conexion {
       rs = ps.executeQuery();
       
       while(rs.next()){ 
-          
         Escuela contenedor = new Escuela(rs.getString("nombre_escuela"),rs.getString("id_escuela"));
-             
         escuela.setCodigo(rs.getString("id_escuela"));
         escuela.setNombre(rs.getString("nombre_escuela"));
         escuelas.add(escuela.getNombre());
-
-        ESCUELAOBJ.add(contenedor);
-        System.out.println("Estos son las escuelas del array:" +  ESCUELAOBJ.get(x).getNombre());
-          
+        escuelaObj.add(contenedor);
         x++;  
       }
       return escuelas;
@@ -114,6 +115,4 @@ public class EscuelaCRUD extends Conexion {
       }
     }
   }
-  
-  
 }

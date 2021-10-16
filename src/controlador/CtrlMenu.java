@@ -16,12 +16,20 @@ import vista.ConsultarPlan;
 import vista.registrarRequisitos;
 
 /**
- *
- * @author Gustavo
+ * Clase que controla las acciones que se realizan en el menú principal.
+ * 
+ * @author Gustavo, María Laura, Sebastían
+ * @version 09/10/2021
  */
 public class CtrlMenu implements ActionListener {
+  //Atributo de clase
   private Menu menu;
   
+  /**
+   * Constructor de la clase
+   * 
+   * @param pMenu ventana de menú principal
+   */
   public CtrlMenu(Menu pMenu){
     this.menu = pMenu;
     this.menu.btnRegistrarEscuela.addActionListener(this);
@@ -31,13 +39,22 @@ public class CtrlMenu implements ActionListener {
     this.menu.btnRegistrarRequisitos.addActionListener(this);
   }
   
+  /**
+   * Inicializa la ventana del menú principal.
+   */
   public void iniciar(){
     menu.setTitle("Gestor de Planes de Estudio");
     menu.setLocationRelativeTo(null);
   }
 
+  /**
+   * Ejecuta las funciones correspondientes a cada botón.
+   * 
+   * @param e el evento que realiza un botón
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
+    //Botón de ventana para registrar escuelas
     if (e.getSource() == menu.btnRegistrarEscuela){
       Escuela escuela = new Escuela();
       EscuelaCRUD escuelaCrud = new EscuelaCRUD();
@@ -48,6 +65,7 @@ public class CtrlMenu implements ActionListener {
       regEscuela.setVisible(true);
     }
     
+    //Botón de ventana para registrar cursos
     if (e.getSource() == menu.btnRegistrarCurso){
       Curso curso = new Curso();
       CursoCRUD cursoCrud = new CursoCRUD();
@@ -59,6 +77,7 @@ public class CtrlMenu implements ActionListener {
       regCurso.setVisible(true);
     }
     
+    //Botón de ventana para registrar plan
     if (e.getSource() == menu.btnRegistrarPlan1){
       PlanDeEstudio plan = new PlanDeEstudio();
       PlanDeEstudioCRUD planCrud= new PlanDeEstudioCRUD();
@@ -71,6 +90,7 @@ public class CtrlMenu implements ActionListener {
       regPlan.setVisible(true);
     }
     
+    //Botón de ventana para consultar planes de estudio
     if (e.getSource() == menu.btnConsultarPlan){
       PlanDeEstudioCRUD planCrud = new PlanDeEstudioCRUD();
       EscuelaCRUD escuelaCrud = new EscuelaCRUD();
@@ -81,11 +101,11 @@ public class CtrlMenu implements ActionListener {
       consultaPlan.setVisible(true);
     }
   
+    //Botón de ventana para registrar requisitos de un curso
     if (e.getSource() == menu.btnRegistrarRequisitos){
       Curso curso = new Curso();
       CursoCRUD cursoCrud = new CursoCRUD();
       EscuelaCRUD escuelaCrud = new EscuelaCRUD();
-      RegistroCurso regCurso = new RegistroCurso();
       registrarRequisitos regRequisitos = new registrarRequisitos();
       
       CtrlRequisitos ctrlRequisitos = new CtrlRequisitos(curso, cursoCrud, regRequisitos,escuelaCrud);

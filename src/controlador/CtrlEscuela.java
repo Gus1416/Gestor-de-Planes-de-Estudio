@@ -9,22 +9,32 @@ import modelo.EscuelaCRUD;
 import vista.RegistrarEscuela;
 
 /**
- *
+ * Clase que controla la entreda y salida de información correspondiente a las escuelas.
+ * 
  * @author Gustavo
+ * @version 09/10/2021
  */
 public class CtrlEscuela implements ActionListener {
+  //Atributos de clase
   private Escuela escuela;
   private EscuelaCRUD escuelaCrud;
   private RegistrarEscuela regEscuela;
   public static ArrayList<Escuela> escuelas = new ArrayList<>();
   
+  /**
+   * Constructor por defecto.
+   */
   public CtrlEscuela() {
-  }
-
-  public ArrayList<Escuela> getEscuelas() {
-    return escuelas;
-  }
-     
+  }  
+  
+  /**
+   * Constructor con parámetros.
+   * 
+   * @param pEscuela      objeto con información de la escuela
+   * @param pEscuelaCrud  objeto con las funciones CRUD de las escuelas
+   * @param pRegEscuela   ventana de registro de escuelas
+   * @param pEscuelas     lista escuelas
+   */
   public CtrlEscuela(Escuela pEscuela, EscuelaCRUD pEscuelaCrud, RegistrarEscuela pRegEscuela, ArrayList<Escuela> pEscuelas){
     this.escuela = pEscuela;
     this.escuelaCrud = pEscuelaCrud;
@@ -35,6 +45,13 @@ public class CtrlEscuela implements ActionListener {
     this.regEscuela.btnVolver.addActionListener(this);
   }
   
+  /**
+   * Constructor con parámetros.
+   * 
+   * @param pEscuela      objeto con información de la escuela
+   * @param pEscuelaCrud  objeto con las funciones CRUD de las escuelas
+   * @param pRegEscuela   ventana de registro de escuelas
+   */
   public CtrlEscuela(Escuela pEscuela, EscuelaCRUD pEscuelaCrud, RegistrarEscuela pRegEscuela){
     this.escuela = pEscuela;
     this.escuelaCrud = pEscuelaCrud;
@@ -43,53 +60,70 @@ public class CtrlEscuela implements ActionListener {
     this.regEscuela.btnLimpiarCampos.addActionListener(this);
     this.regEscuela.btnVolver.addActionListener(this);
   }
- 
+  
+  //Método accesor
+  public ArrayList<Escuela> getEscuelas() {
+    return escuelas;
+  }
+  
+  /**
+   * Inicializa la ventana de registro de escuelas.
+   */
   public void iniciar(){
     regEscuela.setTitle("Gestor de Planes de Estudio");
     regEscuela.setLocationRelativeTo(null);
   }
   
+  /**
+   * Ejecuta las acciones correspondientes a cada botón.
+   * 
+   * @param e el evento que ejecuta un botón
+   */
   @Override
-    public void actionPerformed(ActionEvent e){
+  public void actionPerformed(ActionEvent e) {
+    //Botón de registrar escuela
     if (e.getSource() == regEscuela.btnRegistrarEscuela){
-      
+
+      //Valida la entrada de información
       if (!regEscuela.tfCodigoEscuela.getText().isEmpty() && !regEscuela.tfNombreEscuela.getText().isEmpty()){
-        
         escuela.setCodigo(regEscuela.tfCodigoEscuela.getText());
         escuela.setNombre(regEscuela.tfNombreEscuela.getText());
-        
-        Escuela nueva = new Escuela(regEscuela.tfNombreEscuela.getText(),regEscuela.tfCodigoEscuela.getText());
-        
-        for (int i = 0; i < escuelas.size(); i++) {
-  
-            // accessing each element of array
-            Escuela x = escuelas.get(i);
-            System.out.print("Elemento de lista: " + i + x.getNombre() );
+        Escuela nueva = new Escuela(regEscuela.tfNombreEscuela.getText(), regEscuela.tfCodigoEscuela.getText());
+
+        for (int i = 0; i < escuelas.size(); i++){
+          // accessing each element of array
+          Escuela x = escuelas.get(i);
         }
         
+        //Registra la escuela
         if (escuelaCrud.registrar(escuela)){
           JOptionPane.showMessageDialog(null, "Escuela Registrada");
           limpiar();
-        } else {
+        } else{ 
           JOptionPane.showMessageDialog(null, "Error: Código repetido");
           limpiar();
-        } 
-        
+        }
+
       } else {
-      JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
-      limpiar();
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        limpiar();
       }
-    } 
-    
-    if (e.getSource() == regEscuela.btnLimpiarCampos){
-      limpiar();
     }
     
-    if (e.getSource() == regEscuela.btnVolver){
+    //Botón de limpiar campos
+    if (e.getSource() == regEscuela.btnLimpiarCampos) {
+      limpiar();
+    }
+
+    //Botón de volver
+    if (e.getSource() == regEscuela.btnVolver) {
       regEscuela.setVisible(false);
     }
   }
   
+  /**
+   * Limpia todos los campos de texto de la ventana de registro de escuelas.
+   */
   public void limpiar(){
     regEscuela.tfCodigoEscuela.setText(null);
     regEscuela.tfNombreEscuela.setText(null);

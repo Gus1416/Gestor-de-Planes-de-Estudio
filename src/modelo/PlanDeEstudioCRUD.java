@@ -9,11 +9,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- *
- * @author sebcor
+ * Clase que realiza las funciones básicas de la base de datos relacionadas al Plan de estudios.
+ * 
+ * @author Sebastián
+ * @version 13/10/2021
  */
 public class PlanDeEstudioCRUD extends Conexion {
     
+  /**
+   * Registra un plan de estudios en la base de datos.
+   * @param plan objeto con el plan a registrar
+   * @return Un booleano que indica si la operación conluyó con éxito.
+   */
   public boolean registrar(PlanDeEstudio plan){
     PreparedStatement ps = null;
     Connection con = getConexion();
@@ -41,6 +48,12 @@ public class PlanDeEstudioCRUD extends Conexion {
     }
   }  
   
+  /**
+   * COnsulta información del plan de estudios.
+   * 
+   * @param pEscuela el nombre de la escuela a consultar.
+   * @return un arreglo con los datos del plan de estudios
+   */
   public String[] consultarInfoPlan(String pEscuela){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -79,6 +92,12 @@ public class PlanDeEstudioCRUD extends Conexion {
     }
   }
 
+  /**
+   * Consulta los cursos asignados a un plan de estudios.
+   * 
+   * @param pEscuela el nombre de la escuela a la que se le consulta el plan de estudios
+   * @return una lista de arreglos con la información de los cursos del plan de estudios.
+   */
   public ArrayList<Object[]> consultarCursosPlan(String pEscuela){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -107,10 +126,15 @@ public class PlanDeEstudioCRUD extends Conexion {
     } catch (SQLException ex){
       System.err.println(ex);
       return objFilas;
-
     }
   }
   
+  /**
+   * Asigna un curso al plan de estudios.
+   * 
+   * @param plan el plan al que se le asigna un curso
+   * @return Un booleano que indica si la operación concluyó con éxito.
+   */
   public boolean asignarcurso(PlanDeEstudio plan){
     PreparedStatement ps = null;
     Connection con = getConexion();

@@ -4,94 +4,88 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
- * @author sebcor
+ * Clase con la información de los planes de estudio.
+ * 
+ * @author Sebastián
+ * @version 13/10/2021
  */
 public class PlanDeEstudio {
-  private int iD;
-  private Escuela EscuelaPropietaria;
+  //Atributos de clase
+  private int id;
+  private Escuela escuelaPropietaria;
   private Date fechaVigencia;
   private String bloques;
-  private String CodigoCurso;
+  private String codigoCurso;
 
+  /**
+   * Constructor por defecto
+   */
   public PlanDeEstudio() {
-
-  }
-
-  public PlanDeEstudio(int iD, Escuela EscuelaPropietaria, Date fechaVigencia, String bloques, String CodigoCurso) {
-    this.iD = iD;
-    this.EscuelaPropietaria = EscuelaPropietaria;
-    this.fechaVigencia = fechaVigencia;
-    this.bloques = bloques;
-    this.CodigoCurso = CodigoCurso;
   }
 
   /**
-   * @return the iD
+   * Constructor de la clase con parámetros
+   * 
+   * @param pId                 el identifcador del plan de estudios
+   * @param pEscuelaPropietaria objeto Escuela que es propietaria del plan de estudios
+   * @param pFechaVigencia      fecha de vigencia del plan de estudios
+   * @param pBloques            número de bloques del plan de estudios
+   * @param pCodigoCurso        el identificador del curso
    */
+  public PlanDeEstudio(int pId, Escuela pEscuelaPropietaria, Date pFechaVigencia, String pBloques, String pCodigoCurso) {
+    this.id = pId;
+    this.escuelaPropietaria = pEscuelaPropietaria;
+    this.fechaVigencia = pFechaVigencia;
+    this.bloques = pBloques;
+    this.codigoCurso = pCodigoCurso;
+  }
+
+  //Métodos accesores
   public int getiD() {
-    return iD;
+    return this.id;
   }
 
-  /**
-   * @param iD the iD to set
-   */
-  public void setiD(int iD) {
-    this.iD = iD;
+  public void setiD(int pId) {
+    this.id = pId;
   }
 
-  /**
-   * @return the fechaVigencia
-   */
   public Date getFechaVigencia() {
     return fechaVigencia;
   }
 
-  /**
-   * @param fechaVigencia the fechaVigencia to set
-   */
-  public void setFechaVigencia(Date fechaVigencia) {
-    this.fechaVigencia = fechaVigencia;
+  public void setFechaVigencia(Date pFechaVigencia) {
+    this.fechaVigencia = pFechaVigencia;
   }
 
   public Escuela getEscuelaPropietaria() {
-    return EscuelaPropietaria;
+    return escuelaPropietaria;
   }
 
   public String getCodigoCurso() {
-    return CodigoCurso;
+    return codigoCurso;
   }
 
   public void setCodigoCurso(String CodigoCurso) {
-    this.CodigoCurso = CodigoCurso;
+    this.codigoCurso = CodigoCurso;
   }
 
   public void setEscuelaPropietaria(String EscuelaPropietaria, ArrayList<Escuela> Escuelas) {
     for (int i = 0; i < Escuelas.size(); i++){
       if (EscuelaPropietaria.equals(Escuelas.get(i).getNombre()) == true){
         this.setEscuelaPropietaria(Escuelas.get(i));
-      } 
+      }
     }
   }
 
-  /**
-   * @param EscuelaPropietaria the EscuelaPropietaria to set
-   */
-  public void setEscuelaPropietaria(Escuela EscuelaPropietaria) {
-    this.EscuelaPropietaria = EscuelaPropietaria;
+  public void setEscuelaPropietaria(Escuela pEscuelaPropietaria) {
+    this.escuelaPropietaria = pEscuelaPropietaria;
   }
 
-  /**
-   * @return the bloques
-   */
   public String getBloques() {
     return bloques;
   }
 
-  /**
-   * @param bloques the bloques to set
-   */
-  public void setBloques(String bloques) {
-    this.bloques = bloques;
+  public void setBloques(String pBloques) {
+    this.bloques = pBloques;
   }
 }

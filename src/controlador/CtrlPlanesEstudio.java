@@ -11,20 +11,31 @@ import modelo.EscuelaCRUD;
 import modelo.CursoCRUD;
 
 /**
- *
- * @author sebcor
+ * Clase que controla la entrada y salida de información correspondiente a los planes de estudio.
+ * 
+ * @author Sebastián
+ * @version 13/10/2021
  */
 public class CtrlPlanesEstudio implements ActionListener {   
+  //Atributos de clase
   private  PlanDeEstudio plan;
   private final PlanDeEstudioCRUD planCrud;
   private final registrarPlan regPlan;
   private EscuelaCRUD consultarEscuelas;
   private CursoCRUD consultarCursos;
-  
   public static ArrayList<PlanDeEstudio> planes = new ArrayList<>();
    
-  
-  public CtrlPlanesEstudio(PlanDeEstudio pPlanDeEstudio, PlanDeEstudioCRUD pPlanCRUD, registrarPlan pRegPlan, EscuelaCRUD pEscuelaCRUD, CursoCRUD pCursoCRUD ){
+  /**
+   * Constructor de la clase.
+   * 
+   * @param pPlanDeEstudio  objeto que contiene la información de los planes de estudio
+   * @param pPlanCRUD       objeto con las funciones CRUD de los planes de estudio
+   * @param pRegPlan        ventana de registro de planes de estudio
+   * @param pEscuelaCRUD    objeto con las funciones CRUD de las escuelas
+   * @param pCursoCRUD      objeto con las funciones CRUD de los cursos
+   */
+  public CtrlPlanesEstudio(PlanDeEstudio pPlanDeEstudio, PlanDeEstudioCRUD pPlanCRUD, registrarPlan pRegPlan, 
+          EscuelaCRUD pEscuelaCRUD, CursoCRUD pCursoCRUD ){
     this.plan = pPlanDeEstudio;
     this.planCrud = pPlanCRUD;
     this.regPlan = pRegPlan;
@@ -37,12 +48,18 @@ public class CtrlPlanesEstudio implements ActionListener {
     this.consultarCursos= pCursoCRUD;       
   }
   
+  /**
+   * Incializa la ventana de registro de planes de estudio.
+   */
   public void iniciar(){
     cargarEscuelas();
     regPlan.setTitle("Gestor de Planes de Estudio");  
     regPlan.setLocationRelativeTo(null);
   }
   
+  /**
+   * Carga la lista de escuelas en el combobox de la ventana.
+   */
   public ArrayList cargarEscuelas(){
     ArrayList<String> escuelas = consultarEscuelas.consultar();
     for (String escuela : escuelas){
@@ -51,6 +68,9 @@ public class CtrlPlanesEstudio implements ActionListener {
     return escuelas;
   }
   
+  /**
+   * Carga la lista de codigos de cursos en el combobox de la ventana.
+   */
   public ArrayList cargarCodigos(){
     ArrayList<String> codigos = consultarCursos.consultar();
     for (String codigo : codigos){
@@ -59,13 +79,20 @@ public class CtrlPlanesEstudio implements ActionListener {
     return codigos;
   }
   
+  /**
+   * Ejecuta las funciones correspondientes a cada botón.
+   * 
+   * @param e el evento que realiza un botón
+   */
   @Override
   public void actionPerformed(ActionEvent e){
+    //Botón de regisrar plan
     if (e.getSource() == regPlan.btnRegistrarPlan){
       plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
-      plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.ESCUELAOBJ);
+      plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.escuelaObj);
       plan.setFechaVigencia(regPlan.DateChooser.getCalendar().getTime());
       
+      //Registra el plan
       if (planCrud.registrar(plan)){ 
         JOptionPane.showMessageDialog(null, "Plan Registrado");
         limpiarPlan();
@@ -75,6 +102,7 @@ public class CtrlPlanesEstudio implements ActionListener {
       }
     }
     
+    //Asigna cursos al plan
     if (e.getSource() == regPlan.btnAsignarCurso){       
       for(int i=0 ; i< planes.size(); i++){        
         if(regPlan.tfPlanCode.equals(planes.get(i).getiD()) == true){           
@@ -85,6 +113,7 @@ public class CtrlPlanesEstudio implements ActionListener {
       plan.setCodigoCurso(regPlan.cbCodigosCurso.getSelectedItem().toString());  
       plan.setBloques(regPlan.cbBloques.getSelectedItem().toString());
       
+      //Registra el curso en el plan de estudios
       if (planCrud.asignarcurso(plan)){
         JOptionPane.showMessageDialog(null, "Curso Asignado"); 
         limpiarPlan();
@@ -94,9 +123,10 @@ public class CtrlPlanesEstudio implements ActionListener {
       } 
     }
     
+    //Carga la lista de cursos
     if (e.getSource() == regPlan.btnLoad){   
       regPlan.cbCodigosCurso.removeAllItems();
-      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.ESCUELAOBJ,regPlan.cbEscuelaPlan.getSelectedItem().toString());      
+      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.escuelaObj,regPlan.cbEscuelaPlan.getSelectedItem().toString());      
       System.out.println("Mae este es el codigo que mellega de su metodo:" + codigo);
       ArrayList<String> codigos = consultarCursos.consultarCodigos(codigo);    
       for (String code : codigos){       
@@ -104,6 +134,7 @@ public class CtrlPlanesEstudio implements ActionListener {
       } 
     }
     
+    //Limpia los campos de texto
     if (e.getSource() == regPlan.btnLimpiarCampos){
       limpiarPlan();  
     }
@@ -113,6 +144,9 @@ public class CtrlPlanesEstudio implements ActionListener {
     }   
   }
   
+  /**
+   * Limpia los campos de texto
+   */
   public void limpiarPlan(){
    // regPlan.tfCodigoCursoPlan.setText(null);
    //   regPlan.tfPlanCode.setText(null);

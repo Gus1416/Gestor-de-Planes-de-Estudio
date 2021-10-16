@@ -1,4 +1,3 @@
-
 package modelo;
 
 import com.itextpdf.text.BaseColor;
@@ -15,10 +14,13 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase que crea una plantilla en PDF con la información del plan de estudios consultado.
+ * 
  * @author Gustavo
+ * @version 09/10/2021
  */
 public class PlantillaPDF {
+  //Atributos de clase
   private String escuela;
   private String codigoPlan;
   private String fechaVigencia;
@@ -29,6 +31,16 @@ public class PlantillaPDF {
   private FileOutputStream archivo;
   private Paragraph titulo;
   
+  /**
+   * Constructor de la clase
+   * 
+   * @param pEscuela        el nombre de la escuela consultada
+   * @param pCodigoPlan     el código del plan consultado
+   * @param pFechaVigencia  la fecha de vigencia del plan consultado
+   * @param pInfoCursos     una lista de arreglos con la información de los cursos.
+   * @param pTotalCursos    cantidad de cursos que tiene el plan
+   * @param pTotalCreditos  cantidad de créditos que tiene el plan
+   */
   public PlantillaPDF(String pEscuela, String pCodigoPlan, String pFechaVigencia ,
           ArrayList<Object[]> pInfoCursos,
           int pTotalCursos, int pTotalCreditos){
@@ -42,8 +54,14 @@ public class PlantillaPDF {
     titulo = new Paragraph("Planes de Estudio");
   }
   
+  /**
+   * Genera la plantilla y le agrega la información.
+   * 
+   * @return Un booleano que indica si la operación concluyó con éxito. 
+   */
   public boolean crearPlantilla(){
     try {
+      //Crea el documento
       this.archivo = new FileOutputStream("planestudio.pdf");
       PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -54,6 +72,7 @@ public class PlantillaPDF {
       documento.add(new Paragraph("Fecha de vigencia: " + fechaVigencia));
       documento.add(Chunk.NEWLINE);
       
+      //Agrega la tabla de cursos
       PdfPTable tabla = new PdfPTable(5);
       tabla.setWidthPercentage(100);
       PdfPCell codigoCurso = new PdfPCell(new Phrase("Código del curso"));
@@ -62,12 +81,14 @@ public class PlantillaPDF {
       PdfPCell horasClase = new PdfPCell(new Phrase("Horas de clase"));
       PdfPCell creditos = new PdfPCell(new Phrase("Créditos"));
       
+      //Colores
       codigoCurso.setBackgroundColor(BaseColor.BLUE);
       nombreCurso.setBackgroundColor(BaseColor.BLUE);
       bloque.setBackgroundColor(BaseColor.BLUE);
       horasClase.setBackgroundColor(BaseColor.BLUE);
       creditos.setBackgroundColor(BaseColor.BLUE);
       
+      //Dibuja la tabla
       tabla.addCell(codigoCurso);
       tabla.addCell(nombreCurso);
       tabla.addCell(bloque);
