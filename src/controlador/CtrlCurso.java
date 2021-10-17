@@ -8,6 +8,7 @@ import modelo.Curso;
 import modelo.CursoCRUD;
 import modelo.EscuelaCRUD;
 import vista.RegistroCurso;
+import vista.Menu;
 
 /**
  *
@@ -18,6 +19,7 @@ public class CtrlCurso implements ActionListener {
   private CursoCRUD cursoCrud;
   private RegistroCurso regCurso;
   private EscuelaCRUD consultarEscuelas;
+  private Menu menu;
  
   public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso, EscuelaCRUD pEscuelaCrud){
     this.curso = pCurso;
@@ -25,6 +27,7 @@ public class CtrlCurso implements ActionListener {
     this.regCurso = pRegCurso;
     this.consultarEscuelas = pEscuelaCrud;
     this.regCurso.RegistrarBt.addActionListener(this);
+
   }
   
   public void iniciar(){
@@ -69,3 +72,4 @@ public class CtrlCurso implements ActionListener {
     regCurso.HorasCb.setSelectedItem(1);
   }
 }
+

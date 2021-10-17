@@ -18,6 +18,14 @@ public class Escuela {
     
   }
 
+    public Escuela(String nombre, String codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
+
+  
+  
+  
   /**
    * Métodos accesores
    */

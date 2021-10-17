@@ -10,6 +10,7 @@ import vista.Menu;
  * @version 1.0 26/09/2021 
  */
 public class GestorPlanesEstudio {
+
   
   /**
    * Main method

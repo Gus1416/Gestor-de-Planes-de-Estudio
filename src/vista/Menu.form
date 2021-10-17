@@ -33,6 +33,10 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnRegistrarEscuela" max="32767" attributes="0"/>
                   <Component id="btnRegistrarCurso" max="32767" attributes="0"/>
+                  <Component id="btnRegistrarPlan" max="32767" attributes="0"/>
+                  <Component id="btnEliminarCurso" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnEliminarPlan1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnEliminarReq" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -47,7 +51,15 @@
               <Component id="btnRegistrarEscuela" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnRegistrarCurso" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="177" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnRegistrarPlan" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnEliminarCurso" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnEliminarPlan1" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <Component id="btnEliminarReq" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,6 +82,47 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar Curso"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegistrarPlan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar Plan"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarCurso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Curso"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarCursoActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarPlan1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Curso de Plan de Estudios"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarPlan1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarReq">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Requisito de un Curso"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarReqActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
