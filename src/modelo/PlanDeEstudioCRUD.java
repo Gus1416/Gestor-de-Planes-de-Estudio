@@ -50,6 +50,20 @@ public class PlanDeEstudioCRUD extends Conexion {
     }
   }  
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   public String[] consultarInfoPlan(String pEscuela){
     PreparedStatement ps = null;
     ResultSet rs = null;

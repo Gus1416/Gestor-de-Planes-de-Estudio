@@ -3,6 +3,7 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -232,8 +233,121 @@ public class CursoCRUD  extends Conexion{
     }
   }
     
- 
     
+    
+    
+    
+    
+    /// Obtener los requisitos del curso consultado 
+    public ArrayList<Object[]> consultarRequisitos(String pCurso){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Object[]> objFilas = new ArrayList<>();
+    
+    String sql = "CALL obtener_requisitos(?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCurso);
+      rs = ps.executeQuery();
+      ResultSetMetaData rsMd = rs.getMetaData();  
+      int cantidadColumnas = rsMd.getColumnCount();
+      
+      while (rs.next()){
+        Object[] filas = new Object[cantidadColumnas];
+        
+        for (int i = 0; i < cantidadColumnas; i++){
+          filas[i] = rs.getObject(i + 1);
+        }
+        objFilas.add(filas);
+      }
+      return objFilas;
+      
+    } catch (SQLException ex){
+      System.err.println(ex);
+      return objFilas;
+
+    }
+  }
+    
+    
+    
+    
+   /// Obtener los corequisitos del curso consultado  
+    
+    
+    public ArrayList<Object[]> consultarCorrequisitos(String pCurso){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Object[]> objFilas = new ArrayList<>();
+    
+    String sql = "CALL obtener_correquisitos(?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCurso);
+      rs = ps.executeQuery();
+      ResultSetMetaData rsMd = rs.getMetaData();  
+      int cantidadColumnas = rsMd.getColumnCount();
+      
+      while (rs.next()){
+        Object[] filas = new Object[cantidadColumnas];
+        
+        for (int i = 0; i < cantidadColumnas; i++){
+          filas[i] = rs.getObject(i + 1);
+        }
+        objFilas.add(filas);
+      }
+      return objFilas;
+      
+    } catch (SQLException ex){
+      System.err.println(ex);
+      return objFilas;
+
+    }
+  }
+    
+  
+    
+    
+  public ArrayList<Object[]> consultarPlanes(String pCurso){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    ArrayList<Object[]> objFilas = new ArrayList<>();
+    
+    String sql = "CALL obtener_plan_estudio(?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pCurso);
+      rs = ps.executeQuery();
+      ResultSetMetaData rsMd = rs.getMetaData();  
+      int cantidadColumnas = rsMd.getColumnCount();
+      
+      while (rs.next()){
+        Object[] filas = new Object[cantidadColumnas];
+        
+        for (int i = 0; i < cantidadColumnas; i++){
+          filas[i] = rs.getObject(i + 1);
+        }
+        objFilas.add(filas);
+      }
+      return objFilas;
+      
+    } catch (SQLException ex){
+      System.err.println(ex);
+      return objFilas;
+
+    }
+  }  
+    
+    
+    
+    
+       
     
 }
 
