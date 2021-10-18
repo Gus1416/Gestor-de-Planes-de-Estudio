@@ -7,6 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+        
 
 /**
  * Clase que realiza las funciones básicas de la base de datos relacionadas al Plan de estudios.
@@ -152,12 +153,81 @@ public class PlanDeEstudioCRUD extends Conexion {
     } catch (SQLException e){
       System.err.println(e);
       return false;  
+    }}
+  
+  public ArrayList<String> consultar(){
+    
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    PlanDeEstudio plan = new PlanDeEstudio();
+    ArrayList<String> planes = new ArrayList<>();
+    
+    
+    String sql = "SELECT * FROM plan_estudio";
+     
+    try{
+      ps = con.prepareStatement(sql);
+      rs = ps.executeQuery();
+        
+      while(rs.next()){ 
+     
+      plan.setiD(Integer.parseInt((rs.getString("id_plan_estudio"))));
+   
+      planes.add(Integer.toString((plan.getiD())));
+    
+
+      }
+      return planes;
+      
+      
+    }catch (SQLException e){
+      System.err.println(e);
+      return planes;
+      
     } finally {
       try {
         con.close();
       } catch (SQLException e){
         System.err.println(e);
       }
+    }
+  }
+    public boolean eliminarCurso(Curso curso){
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+    
+    String sql = "DELETE FROM plan_estudio_curso WHERE id_curso=?";
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1,curso.getIdCurso());
+      ps.execute();
+      return true;
+      
+    } catch (SQLException e){
+      System.err.println(e);
+      return false;
+      
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e){
+        System.err.println(e);
+      }
+
     }  
   }
-}
+
+    
+    }
+    
+
+  
+    
+  
+
+  
+
+    
+     
+

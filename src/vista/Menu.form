@@ -41,10 +41,13 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnConsultarPlan" max="32767" attributes="0"/>
                           <Component id="btnConsultarCursos" max="32767" attributes="0"/>
+                          <Component id="btnEliminarCurso" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEliminarPlan1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEliminarReq" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,10 +67,18 @@
                   <Component id="btnConsultarCursos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnRegistrarPlan1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnRegistrarRequisitos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnRegistrarPlan1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEliminarCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnRegistrarRequisitos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEliminarPlan1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnEliminarReq" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,6 +132,30 @@
     <Component class="javax.swing.JButton" name="btnConsultarCursos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar Curso"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarCurso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Curso"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarPlan1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Curso de Plan"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarReq">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Requisito de un Curso"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

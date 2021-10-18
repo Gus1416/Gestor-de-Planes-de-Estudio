@@ -30,7 +30,7 @@ public class CtrlCurso implements ActionListener {
    * @param pRegCurso     ventana de registro de cursos
    * @param pEscuelaCrud  objetoc con las funciones CRUD de las escuelas
    */
-  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso,EscuelaCRUD pEscuelaCrud){
+  public CtrlCurso(Curso pCurso, CursoCRUD pCursoCrud, RegistroCurso pRegCurso, EscuelaCRUD pEscuelaCrud){
     this.curso = pCurso;
     this.cursoCrud = pCursoCrud;
     this.regCurso = pRegCurso;
