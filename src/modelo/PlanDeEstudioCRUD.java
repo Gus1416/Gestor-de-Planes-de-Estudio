@@ -47,7 +47,7 @@ public class PlanDeEstudioCRUD extends Conexion {
       }
     }
   }  
-  
+
   /**
    * COnsulta información del plan de estudios.
    * 

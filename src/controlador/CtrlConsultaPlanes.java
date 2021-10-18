@@ -83,7 +83,7 @@ public class CtrlConsultaPlanes implements ActionListener {
     this.consultaPlan.tConsultaPlan.setModel(modelo);
     this.cursosTotales = 0;
     this.creditosTotales = 0;
-    this.filas = planCrud.consultarCursosPlan(escuela);
+    this.filas = planCrud.consultarCursosPlan(escuela);  //este es el metodo que se trae los cursos del plan 
     
     //Agrega los encabezados de la tabla
     modelo.addColumn("Código del curso");

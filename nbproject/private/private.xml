@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/PlanDeEstudio.java</file>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/controlador/CtrlConsultaCurso.java</file>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/vista/ConsultarCurso.java</file>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/modelo/CursoCRUD.java</file>
+            <file>file:/C:/Users/sebco/Documents/NetBeansProjects/Gestor-de-Planes-de-Estudio/src/controlador/CtrlConsultaPlanes.java</file>
+        </group>
+>>>>>>> 762e2ab3f304c2f7f9798e4b85075962b9d43ab9
     </open-files>
 </project-private>

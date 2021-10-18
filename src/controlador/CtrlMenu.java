@@ -8,6 +8,7 @@ import modelo.Escuela;
 import modelo.EscuelaCRUD;
 import modelo.PlanDeEstudio;
 import modelo.PlanDeEstudioCRUD;
+import vista.ConsultarCurso;
 import vista.Menu;
 import vista.RegistrarEscuela;
 import vista.RegistroCurso;
@@ -37,6 +38,7 @@ public class CtrlMenu implements ActionListener {
     this.menu.btnRegistrarPlan1.addActionListener(this);
     this.menu.btnConsultarPlan.addActionListener(this);
     this.menu.btnRegistrarRequisitos.addActionListener(this);
+    this.menu.btnConsultarCursos.addActionListener(this);
   }
   
   /**
@@ -112,5 +114,27 @@ public class CtrlMenu implements ActionListener {
       ctrlRequisitos.iniciar();
       regRequisitos.setVisible(true);
     }
+  
+  if (e.getSource() == menu.btnConsultarCursos){
+      PlanDeEstudioCRUD plan = new PlanDeEstudioCRUD();
+      EscuelaCRUD escuela = new EscuelaCRUD();
+      CursoCRUD   curso = new CursoCRUD();
+      ConsultarCurso consulta = new  ConsultarCurso();
+
+                      
+      CtrlConsultaCurso ctrlconsultaCursos = new CtrlConsultaCurso(plan,escuela,curso,consulta);
+      ctrlconsultaCursos.iniciar();
+      consulta.setVisible(true);
+    }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
