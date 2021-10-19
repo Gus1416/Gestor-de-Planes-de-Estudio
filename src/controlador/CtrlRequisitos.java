@@ -45,9 +45,11 @@ public class CtrlRequisitos implements ActionListener {
    * Inicializa la ventana de registro de requisitos.
    */
   public void iniciar() {
-    cargarEscuelas();  // 
+    cargarEscuelas();  
     regRequisitos.setTitle("Gestor de Planes de Estudio");
     regRequisitos.setLocationRelativeTo(null);
+    regRequisitos.btnRegistrarRequisito.setEnabled(false);
+    regRequisitos.btnRegistrarCorrequisito.setEnabled(false);
   }
 
   /**
@@ -74,7 +76,9 @@ public class CtrlRequisitos implements ActionListener {
       consultarCodigos.consultar();
       String CodigoCURSO = regRequisitos.CBcodigos_cursos.getSelectedItem().toString();
       String CodigoCORREQUISITO = regRequisitos.CBcorrequisitos.getSelectedItem().toString();
-      for (int i = 0; i < CursoCRUD.cursosObj.size(); i++)
+      
+      for (int i = 0; i < CursoCRUD.cursosObj.size(); i++){
+        
         if (CodigoCURSO.equals(CursoCRUD.cursosObj.get(i).getIdCurso()) == true){  
           System.out.println("Este es el código del root que me llega: " + CursoCRUD.cursosObj.get(i).getIdCurso());
           curso = CursoCRUD.cursosObj.get(i);  //Definir el curso especifico al cual se le registra el corequisito 
@@ -87,17 +91,20 @@ public class CtrlRequisitos implements ActionListener {
               curso.setAuxCorrequisitos(CursoCRUD.cursosObj.get(z).getIdCurso()); //Agregar el ID del correquisito al curso (REF)
             }
           }
+      
         } else {
           System.out.println("No se encontró el codigo de la escuela ");
         }
+      }
       
       //Registra el correquisito
       if (consultarCodigos.registrarCorrequisito(curso)){ //Llamar el método de registro de Correquisito en Mysql
         JOptionPane.showMessageDialog(null, "Correquisito Registrado");
       } else {
         JOptionPane.showMessageDialog(null, "Error al registrar el correquisito");
-      }
+      }  
     }
+  
     
     //Botón de registrar requisto
     if (e.getSource() == regRequisitos.btnRegistrarRequisito) {
@@ -118,10 +125,11 @@ public class CtrlRequisitos implements ActionListener {
       }
 
       //Registra el requisito
-      if (consultarCodigos.registrarRequisito(curso))
+      if (consultarCodigos.registrarRequisito(curso)){
         JOptionPane.showMessageDialog(null, "Requisito Registrado");
       } else{
         JOptionPane.showMessageDialog(null, "Error al registrar el correquisito");  
+      }
     }
     
     //Botón de cargar cursos
@@ -129,9 +137,11 @@ public class CtrlRequisitos implements ActionListener {
       regRequisitos.CBcodigos_cursos.removeAllItems();
       regRequisitos.CBcorrequisitos.removeAllItems();
       regRequisitos.CBrequisitos.removeAllItems();
+      regRequisitos.btnRegistrarRequisito.setEnabled(true);
+      regRequisitos.btnRegistrarCorrequisito.setEnabled(true);
 
-      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.escuelaObj, regRequisitos.CBEscuelas_Cursos.getSelectedItem().toString());
-      System.out.println("Mae este es el codigo que mellega de su metodo:" + codigo);
+      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.escuelaObj, 
+              regRequisitos.CBEscuelas_Cursos.getSelectedItem().toString());
       ArrayList<String> codigos = consultarCodigos.consultarCodigos(codigo);
       for (String code : codigos) {
         regRequisitos.CBcodigos_cursos.addItem(code);

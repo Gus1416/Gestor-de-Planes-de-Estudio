@@ -42,6 +42,7 @@ public class CtrlEliminarPlan implements ActionListener {
     this.curso = pCurso;
     this.eliminar.btnEliminarCursoPlan.addActionListener(this);
     this.eliminar.btnCargar.addActionListener(this);
+    this.eliminar.btnRegresar.addActionListener(this);
   }
 
   /**
@@ -51,6 +52,7 @@ public class CtrlEliminarPlan implements ActionListener {
     cargarCodigos();
     eliminar.setTitle("Eliminar plan de estudios");
     eliminar.setLocationRelativeTo(null);
+    eliminar.btnEliminarCursoPlan.setEnabled(false);
   }
 
   /**
@@ -93,8 +95,16 @@ public class CtrlEliminarPlan implements ActionListener {
       cargarCodigos();
       eliminar.cbCurso.removeAllItems();
     }
+    
+    //Botón para cargar los cursos
     if (e.getSource() == eliminar.btnCargar){
       cargarCodigosCurso(eliminar.cbPlan.getSelectedItem().toString());
+      eliminar.btnEliminarCursoPlan.setEnabled(true);
+    }
+    
+    //Botón para regresar
+    if (e.getSource() == eliminar.btnRegresar){
+      eliminar.setVisible(false);
     }
   }
 }

@@ -88,19 +88,31 @@ public class CtrlPlanesEstudio implements ActionListener {
   public void actionPerformed(ActionEvent e){
     //Botón de regisrar plan
     if (e.getSource() == regPlan.btnRegistrarPlan){
-      plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
-      plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.escuelaObj);
-      plan.setFechaVigencia(regPlan.DateChooser.getCalendar().getTime());
-      
-      //Registra el plan
-      if (planCrud.registrar(plan)){ 
-        JOptionPane.showMessageDialog(null, "Plan Registrado");
-        limpiarPlan();
+      if (!regPlan.tfPlanCode.getText().isEmpty() && regPlan.tfPlanCode.getText().length() == 4 
+              && regPlan.DateChooser.getCalendar() != null){
+        
+        try {
+          plan.setiD(Integer.valueOf(regPlan.tfPlanCode.getText()));
+          plan.setEscuelaPropietaria(regPlan.cbEscuelaPlan.getSelectedItem().toString(),EscuelaCRUD.escuelaObj);
+          plan.setFechaVigencia(regPlan.DateChooser.getCalendar().getTime());
+          
+          //Registra el plan
+          if (planCrud.registrar(plan)){ 
+            JOptionPane.showMessageDialog(null, "Plan Registrado");
+            limpiarPlan();
+          } else {
+            JOptionPane.showMessageDialog(null, "Error al registrar el plan");
+            limpiarPlan();
+          }
+          
+        } catch (NumberFormatException ex){
+          JOptionPane.showMessageDialog(null, "Error: el código debe ser numérico");
+        }
+        
       } else {
         JOptionPane.showMessageDialog(null, "Error al registrar el plan");
-        limpiarPlan();
       }
-    }
+    } 
     
     //Asigna cursos al plan
     if (e.getSource() == regPlan.btnAsignarCurso){       
@@ -118,7 +130,7 @@ public class CtrlPlanesEstudio implements ActionListener {
         JOptionPane.showMessageDialog(null, "Curso Asignado"); 
         limpiarPlan();
       } else {
-        JOptionPane.showMessageDialog(null, "Error al registrar el plan");
+        JOptionPane.showMessageDialog(null, "Error: el curso está repetido");
         limpiarPlan();
       } 
     }
@@ -126,8 +138,7 @@ public class CtrlPlanesEstudio implements ActionListener {
     //Carga la lista de cursos
     if (e.getSource() == regPlan.btnLoad){   
       regPlan.cbCodigosCurso.removeAllItems();
-      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.escuelaObj,regPlan.cbEscuelaPlan.getSelectedItem().toString());      
-      System.out.println("Mae este es el codigo que mellega de su metodo:" + codigo);
+      String codigo = consultarEscuelas.obtenerEscuelaID(EscuelaCRUD.escuelaObj,regPlan.cbEscuelaPlan.getSelectedItem().toString());
       ArrayList<String> codigos = consultarCursos.consultarCodigos(codigo);    
       for (String code : codigos){       
         regPlan.cbCodigosCurso.addItem(code);         
@@ -148,8 +159,7 @@ public class CtrlPlanesEstudio implements ActionListener {
    * Limpia los campos de texto
    */
   public void limpiarPlan(){
-   // regPlan.tfCodigoCursoPlan.setText(null);
-   //   regPlan.tfPlanCode.setText(null);
+    regPlan.tfPlanCode.setText("");
   }
 }
     

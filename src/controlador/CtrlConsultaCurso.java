@@ -34,6 +34,7 @@ public class CtrlConsultaCurso implements ActionListener {
     this.vistaCursos.btnCargarRequisitos.addActionListener(this);
     this.vistaCursos.btnCargarPlanEstudio.addActionListener(this);
     this.vistaCursos.btnLoad.addActionListener(this);
+    this.vistaCursos.btnVolver.addActionListener(this);
   }
 
   /**
@@ -43,6 +44,9 @@ public class CtrlConsultaCurso implements ActionListener {
     cargarEscuelas();
     vistaCursos.setTitle("Gestor de Planes de Estudio");
     vistaCursos.setLocationRelativeTo(null);
+    vistaCursos.btnCargarRequisitos.setEnabled(false);
+    vistaCursos.btnCargarCorrequisitos.setEnabled(false);
+    vistaCursos.btnCargarPlanEstudio.setEnabled(false);
   }
 
   /**
@@ -151,12 +155,20 @@ public class CtrlConsultaCurso implements ActionListener {
     //Botón para cargar los cursos de la escuela consultada
     if (e.getSource() == vistaCursos.btnLoad) {
       vistaCursos.cbCodigosCursos.removeAllItems();
-      String codigo = escuelaCrud.obtenerEscuelaID(EscuelaCRUD.escuelaObj, vistaCursos.cbEscuelasNombre.getSelectedItem().toString());
-      System.out.println("Escuela que me llega de su metodo:" + codigo);
+      String codigo = escuelaCrud.obtenerEscuelaID(EscuelaCRUD.escuelaObj, 
+              vistaCursos.cbEscuelasNombre.getSelectedItem().toString());
       ArrayList<String> codigos = cursoCrud.consultarCodigos(codigo);
+      vistaCursos.btnCargarRequisitos.setEnabled(true);
+      vistaCursos.btnCargarCorrequisitos.setEnabled(true);
+      vistaCursos.btnCargarPlanEstudio.setEnabled(true);
       for (String code : codigos){
         vistaCursos.cbCodigosCursos.addItem(code);
       }
+    }
+    
+    //Botón para regresar
+    if (e.getSource() == vistaCursos.btnVolver){
+      vistaCursos.setVisible(false);
     }
   }
 }

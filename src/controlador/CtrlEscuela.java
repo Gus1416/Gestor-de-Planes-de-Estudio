@@ -86,21 +86,15 @@ public class CtrlEscuela implements ActionListener {
 
       //Valida la entrada de información
       if (!regEscuela.tfCodigoEscuela.getText().isEmpty() && !regEscuela.tfNombreEscuela.getText().isEmpty()){
-        escuela.setCodigo(regEscuela.tfCodigoEscuela.getText());
+        escuela.setCodigo(regEscuela.tfCodigoEscuela.getText().toUpperCase());
         escuela.setNombre(regEscuela.tfNombreEscuela.getText());
-        Escuela nueva = new Escuela(regEscuela.tfNombreEscuela.getText(), regEscuela.tfCodigoEscuela.getText());
-
-        for (int i = 0; i < escuelas.size(); i++){
-          // accessing each element of array
-          Escuela x = escuelas.get(i);
-        }
         
         //Registra la escuela
         if (escuelaCrud.registrar(escuela)){
           JOptionPane.showMessageDialog(null, "Escuela Registrada");
           limpiar();
         } else{ 
-          JOptionPane.showMessageDialog(null, "Error: Código repetido");
+          JOptionPane.showMessageDialog(null, "Error: el código está repetido o incorrecto");
           limpiar();
         }
 

@@ -39,6 +39,8 @@ public class CtrlEliminar implements ActionListener{
     this.eliminar.btnEliminarCurso.addActionListener(this);
     this.eliminarReq.btnCargar.addActionListener(this);
     this.eliminarReq.btnEliminarReq.addActionListener(this);
+    this.eliminar.btnRegresar.addActionListener(this);
+    this.eliminarReq.btnRegresar.addActionListener(this);
   }
 
   /**
@@ -47,8 +49,11 @@ public class CtrlEliminar implements ActionListener{
   public void iniciar() {
     cargarCodigos1();
     cargarCodigos2();
-    eliminar.setTitle("Eliminar curso");
+    eliminar.setTitle("Gestor de Planes de Estudio");
     eliminar.setLocationRelativeTo(null);
+    eliminarReq.setTitle("Gestor de Planes de Estudio");
+    eliminarReq.setLocationRelativeTo(null);
+    eliminarReq.btnEliminarReq.setEnabled(false);
   }
 
   /**
@@ -100,15 +105,20 @@ public class CtrlEliminar implements ActionListener{
       if (cursoCrud.eliminar(curso)){
         JOptionPane.showMessageDialog(null, "Curso eliminado");
       } else {
-        JOptionPane.showMessageDialog(null, "Error al eliminar");
+        JOptionPane.showMessageDialog(null, "Error: el curso pertenece a un plan de estudios");
       }
       eliminar.cbCurso.removeAllItems();
       cargarCodigos1();
     }
     
+    if (e.getSource() == eliminar.btnRegresar){
+      eliminar.setVisible(false);
+    }
+    
     //Botón para cargar requisitos de un curso
     if (e.getSource() == eliminarReq.btnCargar){
       cargarCodigosRe(eliminarReq.cbCurso.getSelectedItem().toString());
+      eliminarReq.btnEliminarReq.setEnabled(true);
     }
     
     //Botón de eliminar requisitos
@@ -120,6 +130,11 @@ public class CtrlEliminar implements ActionListener{
       } else {
         JOptionPane.showMessageDialog(null, "Error al eliminar");
       }
+    }
+    
+    //Botón para regresar
+    if (e.getSource() == eliminarReq.btnRegresar){
+      eliminarReq.setVisible(false);
     }
   }
 }

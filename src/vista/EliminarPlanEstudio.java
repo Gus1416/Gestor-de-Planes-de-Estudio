@@ -31,6 +31,7 @@ public class EliminarPlanEstudio extends javax.swing.JFrame {
     cbCurso = new javax.swing.JComboBox<>();
     jLabel3 = new javax.swing.JLabel();
     btnCargar = new javax.swing.JButton();
+    btnRegresar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,8 @@ public class EliminarPlanEstudio extends javax.swing.JFrame {
 
     btnCargar.setText("Cargar Cursos");
 
+    btnRegresar.setText("Regresar");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -57,43 +60,47 @@ public class EliminarPlanEstudio extends javax.swing.JFrame {
       .addGroup(layout.createSequentialGroup()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
-            .addGap(51, 51, 51)
+            .addGap(20, 20, 20)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+              .addComponent(btnCargar)
+              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                  .addComponent(jLabel3)
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                  .addComponent(cbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                  .addComponent(jLabel1)
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                  .addComponent(cbPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
               .addGroup(layout.createSequentialGroup()
-                .addComponent(btnCargar)
-                .addGap(18, 18, 18)
-                .addComponent(btnEliminarCursoPlan))
-              .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(btnEliminarCursoPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-              .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
           .addGroup(layout.createSequentialGroup()
-            .addGap(74, 74, 74)
+            .addGap(46, 46, 46)
             .addComponent(jLabel2)))
-        .addContainerGap(54, Short.MAX_VALUE))
+        .addGap(0, 24, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addGap(59, 59, 59)
+        .addGap(20, 20, 20)
         .addComponent(jLabel2)
-        .addGap(31, 31, 31)
+        .addGap(25, 25, 25)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(cbPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(jLabel1))
-        .addGap(15, 15, 15)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(btnCargar)
+        .addGap(21, 21, 21)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel3)
           .addComponent(cbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(29, 29, 29)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(btnEliminarCursoPlan)
-          .addComponent(btnCargar))
-        .addContainerGap(82, Short.MAX_VALUE))
+          .addComponent(btnRegresar))
+        .addContainerGap(29, Short.MAX_VALUE))
     );
 
     pack();
@@ -141,6 +148,7 @@ public class EliminarPlanEstudio extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnCargar;
   public javax.swing.JButton btnEliminarCursoPlan;
+  public javax.swing.JButton btnRegresar;
   public javax.swing.JComboBox<String> cbCurso;
   public javax.swing.JComboBox<String> cbPlan;
   private javax.swing.JLabel jLabel1;

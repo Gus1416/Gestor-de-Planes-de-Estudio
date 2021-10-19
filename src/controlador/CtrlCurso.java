@@ -68,19 +68,24 @@ public class CtrlCurso implements ActionListener {
   public void actionPerformed(ActionEvent e){
     //Botón de registrar escuela
     if (e.getSource() == regCurso.RegistrarBt){
-      curso.setEscuela((String)regCurso.EscuelaCb.getSelectedItem());
-      curso.setIdCurso(regCurso.txtCodigo.getText());
-      curso.setNombreCurso(regCurso.txtNombre.getText());
-      curso.setHorasLectivas((String)((regCurso.HorasCb.getSelectedItem())));
-      curso.setCreditos(((String) regCurso.CreditosCb.getSelectedItem()));
-      
-      //Registra el curso
-      if (cursoCrud.registrar(curso)){
-        JOptionPane.showMessageDialog(null, "Curso Registrado");
-        limpiar();
+      //Valida la entrada de información
+      if (!regCurso.txtNombre.getText().isEmpty() && !regCurso.txtCodigo.getText().isEmpty()){
+        curso.setEscuela((String)regCurso.EscuelaCb.getSelectedItem());
+        curso.setIdCurso(regCurso.txtCodigo.getText());
+        curso.setNombreCurso(regCurso.txtNombre.getText());
+        curso.setHorasLectivas((String)((regCurso.HorasCb.getSelectedItem())));
+        curso.setCreditos(((String) regCurso.CreditosCb.getSelectedItem()));
+
+        //Registra el curso
+        if (regCurso.txtCodigo.getText().length() == 6 && cursoCrud.registrar(curso)){
+          JOptionPane.showMessageDialog(null, "Curso Registrado");
+          limpiar();
+        } else {
+          JOptionPane.showMessageDialog(null, "Error: el código está repetido o incorrecto");
+          limpiar();
+        }
       } else {
-        JOptionPane.showMessageDialog(null, "Error al registrar el curso");
-        limpiar();
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
       }
     }
     
