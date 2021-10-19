@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import modelo.Curso;
 import modelo.CursoCRUD;
 import modelo.EscuelaCRUD;
-import vista.registrarRequisitos;
+import vista.RegistrarRequisitos;
 
 /**
  * Clase que controla la entrada y salida de los requisitos de los cursos.
@@ -18,7 +18,7 @@ public class CtrlRequisitos implements ActionListener {
   //Atributos de clase
   private Curso curso;
   private CursoCRUD consultarCodigos;
-  private registrarRequisitos regRequisitos;
+  private RegistrarRequisitos regRequisitos;
   private EscuelaCRUD consultarEscuelas;
   public static Curso root = new Curso();
 
@@ -30,7 +30,7 @@ public class CtrlRequisitos implements ActionListener {
    * @param pRegRequisitos  ventana de registro de requisitos 
    * @param pEscuelaCrud    objeto con las funciones CRUD de las escuelas
    */
-  public CtrlRequisitos(Curso pCurso, CursoCRUD pCursoCrud, registrarRequisitos pRegRequisitos, EscuelaCRUD pEscuelaCrud) {
+  public CtrlRequisitos(Curso pCurso, CursoCRUD pCursoCrud, RegistrarRequisitos pRegRequisitos, EscuelaCRUD pEscuelaCrud) {
     this.curso = pCurso;
     this.regRequisitos = pRegRequisitos;
     this.consultarEscuelas = pEscuelaCrud;

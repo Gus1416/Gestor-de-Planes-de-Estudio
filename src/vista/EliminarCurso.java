@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-
 /**
- *
+ * Ventana para la eliminación de cursos.
+ * 
  * @author Maria Laura
+ * @version 17/10/2021
  */
 public class EliminarCurso extends javax.swing.JFrame {
 
     /**
-     * Creates new form Eliminar
+     * Crea un nuevo formulario Eliminar
      */
     public EliminarCurso() {
         initComponents();

@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 /**
- *
- * @author sebco
+ * Ventana para la consulta de cursos.
+ * 
+ * @author Sebastián
+ * @version 17/10/2021
  */
 public class ConsultarCurso extends javax.swing.JFrame {
 
     /**
-     * Creates new form ConsultarCurso
+     * Crea un nuevo formulario ConsultarCurso
      */
     public ConsultarCurso() {
         initComponents();

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
         
-
 /**
  * Clase que realiza las funciones básicas de la base de datos relacionadas al Plan de estudios.
  * 
@@ -16,13 +15,13 @@ import java.util.ArrayList;
  * @version 13/10/2021
  */
 public class PlanDeEstudioCRUD extends Conexion {
-    
+  
   /**
-   * Registra un plan de estudios en la base de datos.
-   * @param plan objeto con el plan a registrar
+   * Registra un pPlan de estudios en la base de datos.
+   * @param pPlan objeto con el pPlan a registrar
    * @return Un booleano que indica si la operación conluyó con éxito.
    */
-  public boolean registrar(PlanDeEstudio plan){
+  public boolean registrar(PlanDeEstudio pPlan){
     PreparedStatement ps = null;
     Connection con = getConexion();
     
@@ -30,9 +29,9 @@ public class PlanDeEstudioCRUD extends Conexion {
     
     try{
       ps = con.prepareStatement(sql);
-      ps.setInt(1, plan.getiD());
-      ps.setString(2, plan.getEscuelaPropietaria().getNombre());
-      ps.setDate(3, new java.sql.Date(plan.getFechaVigencia().getTime()));
+      ps.setInt(1, pPlan.getiD());
+      ps.setString(2, pPlan.getEscuelaPropietaria().getNombre());
+      ps.setDate(3, new java.sql.Date(pPlan.getFechaVigencia().getTime()));
       ps.execute();
       return true;
       
@@ -131,12 +130,12 @@ public class PlanDeEstudioCRUD extends Conexion {
   }
   
   /**
-   * Asigna un curso al plan de estudios.
+   * Asigna un curso al pPlan de estudios.
    * 
-   * @param plan el plan al que se le asigna un curso
+   * @param pPlan el pPlan al que se le asigna un curso
    * @return Un booleano que indica si la operación concluyó con éxito.
    */
-  public boolean asignarcurso(PlanDeEstudio plan){
+  public boolean asignarcurso(PlanDeEstudio pPlan){
     PreparedStatement ps = null;
     Connection con = getConexion();
 
@@ -144,25 +143,29 @@ public class PlanDeEstudioCRUD extends Conexion {
 
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1,Integer.toString(plan.getiD()));
-      ps.setString(2, plan.getCodigoCurso());
-      ps.setString(3, plan.getBloques());
+      ps.setString(1,Integer.toString(pPlan.getiD()));
+      ps.setString(2, pPlan.getCodigoCurso());
+      ps.setString(3, pPlan.getBloques());
       ps.execute();
       return true;
 
     } catch (SQLException e){
       System.err.println(e);
-      return false;  
-    }}
-  
+      return false;
+    }
+  }
+
+  /**
+   * COnsulta los planes de estudio almacenados.
+   * 
+   * @return una lista con los planes de estudios registrados
+   */
   public ArrayList<String> consultar(){
-    
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
     PlanDeEstudio plan = new PlanDeEstudio();
     ArrayList<String> planes = new ArrayList<>();
-    
     
     String sql = "SELECT * FROM plan_estudio";
      
@@ -170,16 +173,11 @@ public class PlanDeEstudioCRUD extends Conexion {
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
         
-      while(rs.next()){ 
-     
-      plan.setiD(Integer.parseInt((rs.getString("id_plan_estudio"))));
-   
-      planes.add(Integer.toString((plan.getiD())));
-    
-
+      while (rs.next()) {
+        plan.setiD(Integer.parseInt((rs.getString("id_plan_estudio"))));
+        planes.add(Integer.toString((plan.getiD())));
       }
       return planes;
-      
       
     }catch (SQLException e){
       System.err.println(e);
@@ -193,34 +191,38 @@ public class PlanDeEstudioCRUD extends Conexion {
       }
     }
   }
-    public boolean eliminarCurso(Curso curso){
+  
+  /**
+   * Elimina un curso específico.
+   * 
+   * @param pCurso el curso a eliminar
+   * @return Un booleano que indica si 
+   */
+  public boolean eliminarCurso(Curso pCurso) {
     PreparedStatement ps = null;
     Connection con = getConexion();
-    
+
     String sql = "DELETE FROM plan_estudio_curso WHERE id_curso=?";
+    
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1,curso.getIdCurso());
+      ps.setString(1, pCurso.getIdCurso());
       ps.execute();
       return true;
-      
+
     } catch (SQLException e){
       System.err.println(e);
       return false;
-      
+
     } finally {
       try {
         con.close();
-      } catch (SQLException e){
+      } catch (SQLException e) {
         System.err.println(e);
       }
-
-    }  
-  }
-
-    
     }
-    
+  }
+}
 
   
     

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.PlanDeEstudio;
 import modelo.PlanDeEstudioCRUD;
-import vista.registrarPlan;
+import vista.RegistrarPlan;
 import java.util.ArrayList;
 import modelo.EscuelaCRUD;
 import modelo.CursoCRUD;
@@ -20,7 +20,7 @@ public class CtrlPlanesEstudio implements ActionListener {
   //Atributos de clase
   private  PlanDeEstudio plan;
   private final PlanDeEstudioCRUD planCrud;
-  private final registrarPlan regPlan;
+  private final RegistrarPlan regPlan;
   private EscuelaCRUD consultarEscuelas;
   private CursoCRUD consultarCursos;
   public static ArrayList<PlanDeEstudio> planes = new ArrayList<>();
@@ -34,7 +34,7 @@ public class CtrlPlanesEstudio implements ActionListener {
    * @param pEscuelaCRUD    objeto con las funciones CRUD de las escuelas
    * @param pCursoCRUD      objeto con las funciones CRUD de los cursos
    */
-  public CtrlPlanesEstudio(PlanDeEstudio pPlanDeEstudio, PlanDeEstudioCRUD pPlanCRUD, registrarPlan pRegPlan, 
+  public CtrlPlanesEstudio(PlanDeEstudio pPlanDeEstudio, PlanDeEstudioCRUD pPlanCRUD, RegistrarPlan pRegPlan, 
           EscuelaCRUD pEscuelaCRUD, CursoCRUD pCursoCRUD ){
     this.plan = pPlanDeEstudio;
     this.planCrud = pPlanCRUD;

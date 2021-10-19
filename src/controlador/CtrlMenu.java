@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import modelo.Curso;
 import modelo.CursoCRUD;
 import modelo.Escuela;
-
 import modelo.EscuelaCRUD;
 import modelo.PlanDeEstudio;
 import modelo.PlanDeEstudioCRUD;
@@ -13,9 +12,9 @@ import vista.ConsultarCurso;
 import vista.Menu;
 import vista.RegistrarEscuela;
 import vista.RegistroCurso;
-import vista.registrarPlan;
+import vista.RegistrarPlan;
 import vista.ConsultarPlan;
-import vista.registrarRequisitos;
+import vista.RegistrarRequisitos;
 import vista.EliminarCurso;
 import vista.EliminarPlanEstudio;
 import vista.EliminarReq;
@@ -90,7 +89,7 @@ public class CtrlMenu implements ActionListener {
     if (e.getSource() == menu.btnRegistrarPlan1){
       PlanDeEstudio plan = new PlanDeEstudio();
       PlanDeEstudioCRUD planCrud= new PlanDeEstudioCRUD();
-      registrarPlan regPlan = new registrarPlan();
+      RegistrarPlan regPlan = new RegistrarPlan();
       EscuelaCRUD consultarEscuelas = new EscuelaCRUD();
       CursoCRUD consultarCursos = new CursoCRUD();
         
@@ -115,13 +114,14 @@ public class CtrlMenu implements ActionListener {
       Curso curso = new Curso();
       CursoCRUD cursoCrud = new CursoCRUD();
       EscuelaCRUD escuelaCrud = new EscuelaCRUD();
-      registrarRequisitos regRequisitos = new registrarRequisitos();
+      RegistrarRequisitos regRequisitos = new RegistrarRequisitos();
       
       CtrlRequisitos ctrlRequisitos = new CtrlRequisitos(curso, cursoCrud, regRequisitos,escuelaCrud);
       ctrlRequisitos.iniciar();
       regRequisitos.setVisible(true);
     }
   
+    //Botón de ventana para consultar cursos
     if (e.getSource() == menu.btnConsultarCursos){
       PlanDeEstudioCRUD plan = new PlanDeEstudioCRUD();
       EscuelaCRUD escuela = new EscuelaCRUD();
@@ -134,7 +134,8 @@ public class CtrlMenu implements ActionListener {
       consulta.setVisible(true);
     }
   
- if (e.getSource() == menu.btnEliminarCurso){
+    //Botón para ventana de eliminar cursos
+    if (e.getSource() == menu.btnEliminarCurso){
       Curso curso = new Curso();
       CursoCRUD consultarCursos = new CursoCRUD();
       EliminarReq eliminarReq= new EliminarReq();
@@ -146,6 +147,7 @@ public class CtrlMenu implements ActionListener {
       eliminar.setVisible(true);
     }
 
+    //Botón para ventana de eliminar un curso de un plan de estudios
     if (e.getSource() == menu.btnEliminarPlan1){
       PlanDeEstudio plan = new PlanDeEstudio();
       PlanDeEstudioCRUD consultarPlan = new PlanDeEstudioCRUD();
@@ -159,7 +161,8 @@ public class CtrlMenu implements ActionListener {
       eliminar.setVisible(true);
     }
     
-     if (e.getSource() == menu.btnEliminarReq){
+    //Botón para ventana de eliminar requisitos
+    if (e.getSource() == menu.btnEliminarReq){
       Curso curso = new Curso();
       CursoCRUD consultarCursos = new CursoCRUD();
       EliminarReq eliminarReq= new EliminarReq();

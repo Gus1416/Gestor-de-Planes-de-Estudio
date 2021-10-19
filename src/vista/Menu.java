@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 /**
- *
+ * Ventana del menú principal
+ * 
  * @author Gustavo
+ * @version 18/10/2021
  */
 public class Menu extends javax.swing.JFrame {
 
   /**
-   * Creates new form Menu
+   * Crea un nuevo formulario Menu
    */
   public Menu() {
     initComponents();

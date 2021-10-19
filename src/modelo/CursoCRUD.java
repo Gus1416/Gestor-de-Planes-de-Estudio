@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import static modelo.EscuelaCRUD.escuelaObj;
-import vista.RegistroCurso;
 
 /**
  * Clase que realiza las funciones de base de datos respectivas a los cursos.
@@ -21,12 +18,12 @@ public class CursoCRUD extends Conexion {
   public static ArrayList<Curso> cursosObj = new ArrayList<Curso>();
 
   /**
-   * Registra un curso en la base de datos.
+   * Registra un pCurso en la base de datos.
    * 
-   * @param curso objeto con la información del curso
+   * @param pCurso objeto con la información del pCurso
    * @return Un booleano que indica si la operación concluyó exitosamente.
    */
-  public boolean registrar(Curso curso) {
+  public boolean registrar(Curso pCurso) {
     PreparedStatement ps = null;
     Connection con = getConexion();
 
@@ -34,11 +31,11 @@ public class CursoCRUD extends Conexion {
     
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, curso.getEscuela());
-      ps.setString(2, curso.getNombreCurso());
-      ps.setString(3, curso.getIdCurso());
-      ps.setString(4, curso.getCreditos());
-      ps.setString(5, curso.getHorasLectivas());
+      ps.setString(1, pCurso.getEscuela());
+      ps.setString(2, pCurso.getNombreCurso());
+      ps.setString(3, pCurso.getIdCurso());
+      ps.setString(4, pCurso.getCreditos());
+      ps.setString(5, pCurso.getHorasLectivas());
       ps.execute();
       return true;
 
@@ -204,54 +201,59 @@ public class CursoCRUD extends Conexion {
       }
     }
   }
-    
-  
-    
-    public boolean eliminar(Curso curso){
+
+  /**
+   * Elimina un pCurso específico de la base de datos.
+   * 
+   * @param pCurso el objeto curso que a eliminar
+   * @return Un booleano que indica si la operación se realizó exitosamente.
+   */
+  public boolean eliminar(Curso pCurso) {
     PreparedStatement ps = null;
     Connection con = getConexion();
-    
-    if (buscarPlanCurso(curso)){
-        System.out.println("Error al eliminar");
-        return false;
-        
-    }else{
-  
-        String sql = "DELETE FROM curso WHERE id_curso=?";
-        try{
-          ps= con.prepareStatement(sql);
-          ps.setString(1, curso.getIdCurso());
-          ps.execute();
-          return true;
-        
 
+    if (buscarPlanCurso(pCurso)){
+      return false;
+
+    } else {
+      String sql = "DELETE FROM curso WHERE id_curso=?";
+      
+      try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, pCurso.getIdCurso());
+        ps.execute();
+        return true;
+
+      } catch (SQLException e){
+        System.err.println(e);
+        return false;
+
+      } finally{
+        try{
+          con.close();
         } catch (SQLException e){
           System.err.println(e);
-          return false;
-
-        } finally {
-          try {
-            con.close();
-          } catch (SQLException e){
-            System.err.println(e);
+        }
       }
     }
   }
-
     
-    }
-    
-  public boolean buscarPlanCurso(Curso curso) {
+  /**
+   * Busca un plan relacionado con el curso consultado.
+   * 
+   * @param pCurso curso perteneciente al plan de estudios
+   * @return Un booleano que indica si la operación se realizó exitosamente.
+   */
+  public boolean buscarPlanCurso(Curso pCurso) {
     PreparedStatement ps = null;
     Connection con = getConexion();
     ResultSet rs = null;
 
-
-    String sql = "SELECT * FROM plan_estudio_curso WHERE id_curso=?";  //busca si un curso está relacionada un plan de estudio
-    try
-    {
+    String sql = "SELECT * FROM plan_estudio_curso WHERE id_curso=?";  //busca si un pCurso está relacionada un plan de estudio
+    
+    try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, curso.getIdCurso());
+      ps.setString(1, pCurso.getIdCurso());
 
       rs = ps.executeQuery();
 
@@ -265,51 +267,10 @@ public class CursoCRUD extends Conexion {
         return false;
       }
 
-    } catch (SQLException e)
-    {
+    } catch (SQLException e){
       System.err.println(e);
       return false;
 
-    } finally
-    {
-      try
-      {
-        con.close();
-      } catch (SQLException e)
-      {
-        System.err.println(e);
-      }
-    }
-  }
-
-     
-public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos que estén asociados a un plan
-    
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    Connection con = getConexion();
-    Curso curso = new Curso();
-    ArrayList<String> cursos = new ArrayList<>();
-    
-    String sql = "SELECT * FROM plan_estudio_curso WHERE id_plan_estudio=?";
-    
-    try{
-      ps = con.prepareStatement(sql);
-      ps.setString(1, id);
-      rs = ps.executeQuery();
-   
-      while(rs.next()){ 
-        curso.setIdCurso((rs.getString("id_curso")));
-        
-        cursos.add(curso.getIdCurso());
-      }
-     
-      return cursos;
-      
-    } catch (SQLException e){
-      System.err.println(e);
-      return cursos;
-      
     } finally {
       try {
         con.close();
@@ -319,7 +280,51 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
     }
   }
 
-  /// Obtener los requisitos del curso consultado 
+  /**
+   * Consulta los cursos de un plan de estudios específico.
+   * 
+   * @param pId identificador del plan de estudios consultado
+   * @return una lista con los cursos del plan de estudios
+   */
+  public ArrayList<String> consultarCursosPlan(String pId) { 
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    Curso curso = new Curso();
+    ArrayList<String> cursos = new ArrayList<>();
+
+    String sql = "SELECT * FROM plan_estudio_curso WHERE id_plan_estudio=?";
+
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setString(1, pId);
+      rs = ps.executeQuery();
+
+      while (rs.next()) {
+        curso.setIdCurso((rs.getString("id_curso")));
+        cursos.add(curso.getIdCurso());
+      }
+      return cursos;
+
+    } catch (SQLException e) {
+      System.err.println(e);
+      return cursos;
+
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e){
+        System.err.println(e);
+      }
+    }
+  }
+
+  /**
+   * Consulta los requisitos de un curso específico.
+   * 
+   * @param pCurso  curso consultado
+   * @return una lista con los requisitos del curso
+   */
   public ArrayList<Object[]> consultarRequisitos(String pCurso) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -328,34 +333,35 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
 
     String sql = "CALL obtener_requisitos(?)";
 
-    try
-    {
+    try {
       ps = con.prepareStatement(sql);
       ps.setString(1, pCurso);
       rs = ps.executeQuery();
       ResultSetMetaData rsMd = rs.getMetaData();
       int cantidadColumnas = rsMd.getColumnCount();
 
-      while (rs.next())
-      {
+      while (rs.next()) {
         Object[] filas = new Object[cantidadColumnas];
 
-        for (int i = 0; i < cantidadColumnas; i++)
-        {
+        for (int i = 0; i < cantidadColumnas; i++){
           filas[i] = rs.getObject(i + 1);
         }
         objFilas.add(filas);
       }
       return objFilas;
 
-    } catch (SQLException ex)
-    {
+    } catch (SQLException ex) {
       System.err.println(ex);
       return objFilas;
-
     }
   }
 
+  /**
+   * Consulta los correquisitos de un curso específico.
+   * 
+   * @param pCurso  curso consultado
+   * @return una lista con los correquisitos del curso
+   */
   public ArrayList<Object[]> consultarCorrequisitos(String pCurso) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -364,36 +370,36 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
 
     String sql = "CALL obtener_correquisitos(?)";
 
-    try
-    {
+    try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pCurso);
       rs = ps.executeQuery();
       ResultSetMetaData rsMd = rs.getMetaData();
       int cantidadColumnas = rsMd.getColumnCount();
 
-      while (rs.next())
-      {
+      while (rs.next()) {
         Object[] filas = new Object[cantidadColumnas];
 
-        for (int i = 0; i < cantidadColumnas; i++)
-        {
+        for (int i = 0; i < cantidadColumnas; i++) {
           filas[i] = rs.getObject(i + 1);
         }
         objFilas.add(filas);
       }
       return objFilas;
 
-    } catch (SQLException ex)
-    {
+    } catch (SQLException ex){
       System.err.println(ex);
       return objFilas;
-
     }
   }
   
-  public ArrayList<String> consultarIdRequisitos(String id){ //seleciona los cursos que estén asociados a un plan
-    
+  /**
+   * Consulta los identificadores de los requisitos de un curso específico.
+   * 
+   * @param pId el identificador del curso consultado
+   * @return una lista con los identificadores de los requisitos del curso
+   */
+  public ArrayList<String> consultarIdRequisitos(String pId){
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
@@ -404,15 +410,13 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
     
     try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, id);
+      ps.setString(1, pId);
       rs = ps.executeQuery();
    
       while(rs.next()){ 
         curso.setIdCurso((rs.getString("requisito")));
-        
         cursos.add(curso.getIdCurso());
       }
-     
       return cursos;
       
     } catch (SQLException e){
@@ -428,6 +432,12 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
     }
   }
 
+  /**
+   * Consulta los planes de estudios en los que se encuentra un curso específico.
+   * 
+   * @param pCurso el curso consultado
+   * @return una lista con los planes a los que pertenece el curso consultado
+   */
   public ArrayList<Object[]> consultarPlanes(String pCurso) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -436,55 +446,52 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
 
     String sql = "CALL obtener_plan_estudio(?)";
 
-    try
-    {
+    try{
       ps = con.prepareStatement(sql);
       ps.setString(1, pCurso);
       rs = ps.executeQuery();
       ResultSetMetaData rsMd = rs.getMetaData();
       int cantidadColumnas = rsMd.getColumnCount();
 
-      while (rs.next())
-      {
+      while (rs.next()) {
         Object[] filas = new Object[cantidadColumnas];
 
-        for (int i = 0; i < cantidadColumnas; i++)
-        {
+        for (int i = 0; i < cantidadColumnas; i++){
           filas[i] = rs.getObject(i + 1);
         }
         objFilas.add(filas);
       }
       return objFilas;
 
-    } catch (SQLException ex)
-    {
+    } catch (SQLException ex) {
       System.err.println(ex);
       return objFilas;
-
     }
   }
   
-  public boolean eliminarRequisito(Curso curso) {
+  /**
+   * Elimina el requisito de un pCurso específico.
+   * 
+   * @param pCurso El curso al que se le elimina el requisito.
+   * @return Un booleano que indica si la operación se realizó con éxito.
+   */
+  public boolean eliminarRequisito(Curso pCurso) {
     PreparedStatement ps = null;
     Connection con = getConexion();
 
     String sql = "DELETE FROM curso WHERE id_curso=?";
-    try
-    {
+    try{
       ps = con.prepareStatement(sql);
-      ps.setString(1, curso.getIdCurso());
+      ps.setString(1, pCurso.getIdCurso());
       ps.execute();
       return true;
 
-    } catch (SQLException e)
-    {
+    } catch (SQLException e){
       System.err.println(e);
       return false;
 
-    } finally
-    {
-      try
-      {
+    } finally{
+      try{
         con.close();
       } catch (SQLException e)
       {
@@ -492,7 +499,6 @@ public ArrayList<String> consultarCursosPlan(String id){ //seleciona los cursos 
       }
     }
   }
-
 }
     
     

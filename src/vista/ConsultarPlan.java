@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 /**
- *
+ * Ventana para la consulta de planes de estudio.
+ * 
  * @author Gustavo
+ * @version 09/10/2021
  */
 public class ConsultarPlan extends javax.swing.JFrame {
 
   /**
-   * Creates new form ConsultarPlan
+   * Crea un nuevo formulario ConsultarPlan
    */
   public ConsultarPlan() {
     initComponents();
